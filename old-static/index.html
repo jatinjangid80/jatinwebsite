@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatin Jangid — Full-Stack & IoT Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Prevent flash of wrong theme on load
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-theme-loading');
+        }
+    </script>
+</head>
+
+<body>
+    <div id="custom-cursor" class="custom-cursor"></div>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="wrap">
+            <div class="logo">Jatin<span></span>Codexs</div>
+            <div class="nav-right" style="display:flex; align-items:center;">
+                <div class="navlinks">
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z" />
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="wrap">
+            <div class="eyebrow" id="tw-eyebrow" style="min-height: 19px;"></div>
+            <h1 id="tw-h1" style="min-height: 140px;"></h1>
+            <p class="hero-sub" id="tw-sub" style="min-height: 60px;"></p>
+            <div class="hero-tags">
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">TanStack Start</span>
+                <span class="tag">Vercel</span>
+                <span class="tag">IoT / ESP32</span>
+                <span class="tag">Supabase</span>
+            </div>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn btn-primary">Start a project</a>
+                <a href="#projects" class="btn btn-ghost">See my work</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="projects">
+        <div class="wrap">
+            <div class="section-head">
+                <div class="section-label">Selected work</div>
+                <h2>Things I've shipped</h2>
+                <p class="section-desc">A mix of client work and personal builds — live products, not mockups.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-inner">
+                    <div class="project-top">
+                        <h3>LookMyHolidays</h3>
+                        <span class="project-status">Live</span>
+                    </div>
+                    <p>A travel agency website handling package listings, SEO, and customer-facing content, deployed
+                        with a custom domain.</p>
+                    <div class="stack-row">
+                        <span class="stack-tag">React</span>
+                        <span class="stack-tag">Vercel</span>
+                        <span class="stack-tag">SEO</span>
+                    </div>
+                    <a href="https://lookmyholidays.vercel.app/" target="_blank" rel="noopener"
+                        class="project-link">Visit site</a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-inner">
+                    <div class="project-top">
+                        <h3>CRM Dashboard</h3>
+                        <span class="project-status">Live</span>
+                    </div>
+                    <p>An internal CRM for managing employees and client records, server-rendered and deployed on
+                        Vercel.</p>
+                    <div class="stack-row">
+                        <span class="stack-tag">TanStack Start</span>
+                        <span class="stack-tag">Nitro SSR</span>
+                        <span class="stack-tag">Vercel</span>
+                    </div>
+                    <a href="https://crm-lookmywebsites.vercel.app" target="_blank" rel="noopener"
+                        class="project-link">Visit dashboard</a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-inner">
+                    <div class="project-top">
+                        <h3>Space Escape Runner</h3>
+                        <span class="project-status">In progress</span>
+                    </div>
+                    <p>A mobile arcade game built with React Native and Expo, currently in active development.</p>
+                    <div class="stack-row">
+                        <span class="stack-tag">React Native</span>
+                        <span class="stack-tag">Expo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="wrap">
+            <div class="section-head">
+                <div class="section-label">Capabilities</div>
+                <h2>What I work with</h2>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>React / Next.js</li>
+                        <li>TanStack Start</li>
+                        <li>Responsive UI/UX</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Supabase</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Mobile</h3>
+                    <ul>
+                        <li>React Native / Expo</li>
+                        <li>Capacitor</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>IoT & AI/ML</h3>
+                    <ul>
+                        <li>ESP32 / Raspberry Pi</li>
+                        <li>MQTT</li>
+                        <li>Applied ML basics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="wrap">
+            <div class="section-head">
+                <div class="section-label">Services</div>
+                <h2>How I can help</h2>
+                <p class="section-desc">Fixed-scope engagements for small businesses that need a working site or tool —
+                    not a maintenance contract.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Business Website</h3>
+                    <p>A fast, SEO-ready site for your business — built, deployed, and connected to your domain.</p>
+                    <div class="service-price">from ₹6,000-₹25,000</div>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Dashboard / CRM</h3>
+                    <p>An internal tool for managing customers, staff, or operations, tailored to how your team actually
+                        works.</p>
+                    <div class="service-price">from ₹15,000-₹40,000</div>
+                </div>
+                <div class="service-card">
+                    <h3>Website Audit & Fixes</h3>
+                    <p>A full pass on an existing site — broken SEO, dead content, performance issues — with a fix list
+                        and implementation.</p>
+                    <div class="service-price">from ₹10,000-₹40,000</div>
+                </div>
+            </div>
+    </section>
+
+    <section id="contact" style="border-bottom:none;">
+        <div class="wrap">
+            <div class="contact-grid">
+                <div class="contact-left">
+                    <div class="section-label">Get in touch</div>
+                    <h2>Tell me about your project</h2>
+                    <p>Fill this in and it'll open in your email app, ready to send to me directly.</p>
+                    <div class="contact-detail">jatinnjangid72973gmail.com</div>
+                    <div class="contact-detail">Jaipur, India</div>
+                </div>
+                <div class="contact-right">
+                    <form id="contactForm">
+                        <div>
+                            <label for="name">Name</label>
+                            <input id="name" type="text" required>
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input id="email" type="email" required>
+                        </div>
+                        <div>
+                            <label for="message">Project details</label>
+                            <textarea id="message" required placeholder="What are you looking to build?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">Jatin — built and maintained by Jatin Jangid</div>
+    </footer>
+
+    <script>
+        // Theme Toggle Script
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-theme');
+            document.documentElement.classList.remove('light-theme-loading');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            let theme = 'dark';
+            if (document.body.classList.contains('light-theme')) {
+                theme = 'light';
+            }
+            localStorage.setItem('theme', theme);
+        });
+
+        // Contact form script
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const subject = encodeURIComponent('Project inquiry from ' + name);
+            const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+            // NOTE: replace with your real email address
+            window.location.href = 'mailto:youremail@example.com?subject=' + subject + '&body=' + body;
+            document.getElementById('formStatus').textContent = 'Opening your email app…';
+        });
+
+
+
+        // Sequential Typewriter Animation
+        const elementsToType = [
+            { id: 'tw-eyebrow', text: "AVAILABLE FOR FREELANCE WORK" },
+            { id: 'tw-h1', text: "Full-stack developer building web products end to end." },
+            { id: 'tw-sub', text: "I design, build, and ship websites, dashboards, and small apps — from first commit to a live deployment your customers actually use." }
+        ];
+
+        let currentElIndex = 0;
+        let charIndex = 0;
+
+        elementsToType.forEach(item => {
+            document.getElementById(item.id).innerHTML = '';
+        });
+
+        function typeWriterMultiple() {
+            if (currentElIndex < elementsToType.length) {
+                const item = elementsToType[currentElIndex];
+                const el = document.getElementById(item.id);
+
+                if (charIndex === 0) {
+                    el.innerHTML = '<span class="text-content"></span><span class="blinking-cursor">|</span>';
+                }
+
+                if (charIndex < item.text.length) {
+                    el.querySelector('.text-content').textContent += item.text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriterMultiple, 20 + Math.random() * 30); // Fast typing speed
+                } else {
+                    el.querySelector('.blinking-cursor').remove();
+                    currentElIndex++;
+                    charIndex = 0;
+                    setTimeout(typeWriterMultiple, 300); // Pause between lines
+                }
+            } else {
+                const lastEl = document.getElementById(elementsToType[elementsToType.length - 1].id);
+                lastEl.innerHTML += '<span class="blinking-cursor">|</span>';
+            }
+        }
+
+        setTimeout(typeWriterMultiple, 600);
+
+  // Canvas Vector Field Animation
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  let width, height;
+  let particles = [];
+  const colors = ['#38BDF8', '#818CF8', '#C084FC', '#F472B6', '#FB923C']; // Blue, Indigo, Purple, Pink, Orange
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+  
+  window.addEventListener('resize', resize);
+  resize();
+
+  let mouse = { x: -1000, y: -1000 };
+  let targetMouse = { x: -1000, y: -1000 }; // For smooth mouse following
+
+  document.addEventListener('mousemove', (e) => {
+      targetMouse.x = e.clientX;
+      targetMouse.y = e.clientY;
+      if (mouse.x === -1000) {
+        mouse.x = targetMouse.x;
+        mouse.y = targetMouse.y;
+      }
+  });
+  document.addEventListener('mouseleave', () => {
+      targetMouse.x = -1000;
+      targetMouse.y = -1000;
+  });
+
+  class Particle {
+    constructor() {
+      this.baseX = 0;
+      this.baseY = 0;
+      this.x = 0;
+      this.y = 0;
+      this.angle = 0;
+      this.targetAngle = 0;
+      this.scale = 1;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      // Introduce a slight random offset for organic feel
+      this.offsetX = (Math.random() - 0.5) * 10;
+      this.offsetY = (Math.random() - 0.5) * 10;
+    }
+
+    update() {
+      let dx = mouse.x - this.baseX;
+      let dy = mouse.y - this.baseY;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+      
+      let targetScale = 1;
+      
+      // Default global flow pattern (gentle wave)
+      let globalAngle = Math.sin(this.baseX * 0.001 + this.baseY * 0.001) * Math.PI;
+
+      if (mouse.x !== -1000 && mouse.y !== -1000 && dist < 600) {
+        // Point towards/away from mouse with a strong swirl
+        let angleToMouse = Math.atan2(dy, dx);
+        
+        // The closer to the mouse, the more it swirls
+        let strength = Math.pow((600 - dist) / 600, 2); 
+        
+        // Blend global flow with magnetic swirl
+        this.targetAngle = globalAngle * (1 - strength) + (angleToMouse + Math.PI / 2) * strength;
+        
+        // Scale up slightly near cursor
+        targetScale = 1 + strength * 1.5; 
+      } else {
+        this.targetAngle = globalAngle;
+      }
+      
+      // Smooth interpolation (lerp)
+      this.scale += (targetScale - this.scale) * 0.08;
+      
+      // Smooth angle rotation (shortest path)
+      let dTheta = this.targetAngle - this.angle;
+      while(dTheta > Math.PI) dTheta -= Math.PI * 2;
+      while(dTheta < -Math.PI) dTheta += Math.PI * 2;
+      this.angle += dTheta * 0.08;
+
+      // Subtle floating position
+      this.x = this.baseX + this.offsetX + Math.cos(this.angle) * this.scale * 2;
+      this.y = this.baseY + this.offsetY + Math.sin(this.angle) * this.scale * 2;
+    }
+    
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.scale(this.scale, this.scale);
+      ctx.fillStyle = this.color;
+      
+      // Lower opacity for a much cleaner, less distracting look
+      ctx.globalAlpha = document.body.classList.contains('light-theme') ? 0.4 : 0.25;
+      
+      // Draw a very tiny, sharp dash (much smaller than before)
+      ctx.beginPath();
+      ctx.roundRect(-2, -0.5, 4, 1, 1);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    // Much denser grid (20px instead of 40px)
+    const spacing = 20; 
+    const cols = Math.floor(width / spacing) + 2;
+    const rows = Math.floor(height / spacing) + 2;
+    
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        let p = new Particle();
+        p.baseX = i * spacing;
+        p.baseY = j * spacing;
+        p.x = p.baseX;
+        p.y = p.baseY;
+        particles.push(p);
+      }
+    }
+  }
+  
+  initParticles();
+
+  function animateCanvas() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Smoothly track mouse ONCE per frame
+    if (targetMouse.x !== -1000) {
+      if (mouse.x === -1000) {
+        mouse.x = targetMouse.x;
+        mouse.y = targetMouse.y;
+      } else {
+        mouse.x += (targetMouse.x - mouse.x) * 0.08;
+        mouse.y += (targetMouse.y - mouse.y) * 0.08;
+      }
+    } else {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    }
+
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateCanvas);
+  }
+  animateCanvas();
+
+
+
+        if (matchMedia('(pointer: fine)').matches) {
+            // Ripple effect on click
+            document.addEventListener('mousedown', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'cursor-ripple';
+                ripple.style.left = e.clientX + 'px';
+                ripple.style.top = e.clientY + 'px';
+                document.body.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+
+            // Magnetic Elements
+            const magneticElements = document.querySelectorAll('.btn, .navlinks a, .theme-toggle, .logo');
+            magneticElements.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                    el.style.transition = 'none'; // remove transition for snappy follow
+                });
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = `translate(0px, 0px)`;
+                    el.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
+            });
+
+            // Custom Cursor tracking
+            const customCursor = document.getElementById('custom-cursor');
+            let cx = window.innerWidth / 2;
+            let cy = window.innerHeight / 2;
+
+            function renderCursor() {
+                if (targetMouse.x !== -1000) {
+                    cx += (targetMouse.x - cx) * 0.15;
+                    cy += (targetMouse.y - cy) * 0.15;
+                    customCursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+                }
+                requestAnimationFrame(renderCursor);
+            }
+            requestAnimationFrame(renderCursor);
+
+            const hoverTargets = document.querySelectorAll('a, button, .skill-card, .project, .theme-toggle');
+            hoverTargets.forEach(el => {
+                el.addEventListener('mouseenter', () => customCursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => customCursor.classList.remove('hover'));
+            });
+        }
+
+    </script>
+
+</body>
+</html>
