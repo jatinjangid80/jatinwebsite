@@ -47,9 +47,6 @@ export default function Home() {
   const [activeColor, setActiveColor] = useState(PALETTE[0]);
 
   // Typewriter states
-  const [eyebrow, setEyebrow] = useState('');
-  const [h1Text, setH1Text] = useState('');
-  const [subText, setSubText] = useState('');
 
   // 1. Theme sync
   useEffect(() => {
@@ -167,49 +164,10 @@ export default function Home() {
     };
   }, []);
 
-  // 4. Typewriter effect
-  useEffect(() => {
-    const eyebrowStr = "AVAILABLE FOR FREELANCE WORK";
-    const h1Str = "Full-stack developer building web products end to end.";
-    const subStr = "I design, build, and ship websites, dashboards, and small apps — from first commit to a live deployment your customers actually use.";
-
-    let currentStep = 0;
-    let charIndex = 0;
-    let timer: NodeJS.Timeout;
-
-    const runTypewriter = () => {
-      if (currentStep === 0) {
-        if (charIndex < eyebrowStr.length) {
-          setEyebrow(eyebrowStr.substring(0, charIndex + 1));
-          charIndex++;
-          timer = setTimeout(runTypewriter, 20 + Math.random() * 20);
-        } else {
-          currentStep = 1;
-          charIndex = 0;
-          timer = setTimeout(runTypewriter, 300);
-        }
-      } else if (currentStep === 1) {
-        if (charIndex < h1Str.length) {
-          setH1Text(h1Str.substring(0, charIndex + 1));
-          charIndex++;
-          timer = setTimeout(runTypewriter, 15 + Math.random() * 25);
-        } else {
-          currentStep = 2;
-          charIndex = 0;
-          timer = setTimeout(runTypewriter, 300);
-        }
-      } else if (currentStep === 2) {
-        if (charIndex < subStr.length) {
-          setSubText(subStr.substring(0, charIndex + 1));
-          charIndex++;
-          timer = setTimeout(runTypewriter, 10 + Math.random() * 15);
-        }
-      }
-    };
-
-    timer = setTimeout(runTypewriter, 600);
-    return () => clearTimeout(timer);
-  }, []);
+  // Removed typewriter effect so text appears instantly
+  const eyebrow = "AVAILABLE FOR FREELANCE WORK";
+  const h1Text = "Full-stack developer building web products end to end.";
+  const subText = "I design, build, and ship websites, dashboards, and small apps — from first commit to a live deployment your customers actually use.";
 
   // Local card hover spotlight tracking
   const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
