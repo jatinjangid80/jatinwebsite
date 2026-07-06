@@ -334,7 +334,7 @@ export default function Home() {
                 <span className="stack-tag">Vercel</span>
                 <span className="stack-tag">SEO</span>
               </div>
-              <a href="https://lookmyholidays.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+              <a href="https://lookmyholidays.in/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
                 Visit site
               </a>
             </div>
@@ -441,7 +441,7 @@ export default function Home() {
               <div className="relative z-10">
                 <h3>Business Website</h3>
                 <p>A fast, SEO-ready site for your business — built, deployed, and connected to your domain.</p>
-                <div className="service-price">from ₹6,000-₹25,000</div>
+                <div className="service-price">Custom Quote</div>
               </div>
             </div>
             <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
@@ -449,7 +449,7 @@ export default function Home() {
               <div className="relative z-10">
                 <h3>Custom Dashboard / CRM</h3>
                 <p>An internal tool for managing customers, staff, or operations, tailored to how your team actually works.</p>
-                <div className="service-price">from ₹15,000-₹40,000</div>
+                <div className="service-price">Custom Quote</div>
               </div>
             </div>
             <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
@@ -457,7 +457,7 @@ export default function Home() {
               <div className="relative z-10">
                 <h3>Website Audit & Fixes</h3>
                 <p>A full pass on an existing site — broken SEO, dead content, performance issues — with a fix list and implementation.</p>
-                <div className="service-price">from ₹10,000-₹40,000</div>
+                <div className="service-price">Custom Quote</div>
               </div>
             </div>
           </div>
@@ -469,7 +469,7 @@ export default function Home() {
             <div className="contact-left">
               <div className="section-label" style={{ color: activeColor }}>Get in touch</div>
               <h2>Tell me about your project</h2>
-              <p>Fill this in and it'll open in your email app, ready to send to me directly.</p>
+              <p>Send me a message below and I'll get back to you within 24 hours.</p>
               <div className="contact-detail">jatinnjangid72973@gmail.com</div>
               <div className="contact-detail">Jaipur, India</div>
             </div>

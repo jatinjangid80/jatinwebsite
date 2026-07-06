@@ -18,8 +18,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "jatinwebsite",
+  title: "Jatin Jangid — Full-Stack Developer",
   description: "I design, build, and ship websites, dashboards, and mobile runner games.",
+  openGraph: {
+    title: "Jatin Jangid — Full-Stack Developer",
+    description: "I design, build, and ship websites, dashboards, and mobile apps — from first commit to live deployment.",
+    url: "https://jatinwebsite-gamma.vercel.app/", // Or the final custom domain
+    siteName: "Jatin Jangid Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
   icons: {
     icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=", // 1x1 transparent PNG
   },
