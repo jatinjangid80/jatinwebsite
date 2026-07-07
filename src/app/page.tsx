@@ -334,7 +334,7 @@ export default function Home() {
                 <span className="stack-tag">Vercel</span>
                 <span className="stack-tag">SEO</span>
               </div>
-              <a href="https://lookmyholidays.in/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+              <a href="https://www.lookmyholiday.co.in/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
                 Visit site
               </a>
             </div>
