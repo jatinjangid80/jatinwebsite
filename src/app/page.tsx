@@ -230,9 +230,6 @@ export default function Home() {
                 strokeLinejoin="miter"
               />
             </svg>
-            <div className="floating-logo-text">
-              <span className="logo-jatin">Jatin</span>
-            </div>
           </a>
           
           <div className="floating-links-list">
@@ -276,7 +273,7 @@ export default function Home() {
         <div className="hero-content">
           {/* Pill Eyebrow */}
           <div
-            className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100/30 text-indigo-600 font-mono text-[14px] font-bold tracking-wide uppercase mb-6 dark:bg-indigo-950/40 dark:border-indigo-900/50"
+            className="self-start inline-flex items-center gap-2 px-5 py-2 rounded-full bg-indigo-50 border border-indigo-100/30 text-indigo-600 font-mono text-[11px] font-bold tracking-wider uppercase mb-6 dark:bg-indigo-950/40 dark:border-indigo-900/50"
             style={{ borderColor: activeColor, color: activeColor }}
           >
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: activeColor }} />
@@ -284,7 +281,7 @@ export default function Home() {
           </div>
 
           <h1 className="font-display font-bold text-slate-900 dark:text-white leading-[1.08] tracking-tight mb-8">
-            Hi, I'm Jatin 👋<br /><br />
+            Hi, I'm Jatin 👋<br />
             Full-Stack Developer<br />
             building modern web products<br />
             for startups & businesses.
