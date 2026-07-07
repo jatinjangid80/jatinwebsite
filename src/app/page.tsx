@@ -158,7 +158,7 @@ export default function Home() {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top; 
+    const y = e.clientY - rect.top;
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
   };
@@ -231,7 +231,7 @@ export default function Home() {
               />
             </svg>
           </a>
-          
+
           <div className="floating-links-list">
             <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="magnetic-target">Projects</a>
             <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')} className="magnetic-target">Skills</a>
@@ -247,7 +247,7 @@ export default function Home() {
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="floating-btn-resume magnetic-target" style={{ backgroundColor: activeColor }}>
               Resume
             </a>
-            
+
             <button
               className="theme-toggle magnetic-target"
               id="themeToggle"
