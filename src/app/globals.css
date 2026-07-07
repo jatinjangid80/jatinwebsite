@@ -93,9 +93,10 @@ a {
 }
 
 .wrap {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 auto;
+    max-width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: auto;
 }
 
 /* Animations */
@@ -277,13 +278,14 @@ body.light-theme .theme-toggle .sun-icon {
 
 /* HERO */
 header.hero {
-    padding: 140px 40 100px;
+    padding-top: 180px; /* 80px navbar height + 100px gap */
+    padding-bottom: 120px; /* 120px gap to Projects */
     animation: fadeIn 0.8s ease-out forwards;
 }
 
 .eyebrow {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--accent);
     display: flex;
     align-items: center;
@@ -302,19 +304,24 @@ header.hero {
     animation: subtlePulse 2s infinite;
 }
 
+.hero-content {
+    max-width: 720px;
+    width: 100%;
+}
+
 h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-size: 72px; /* Desktop default */
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
-    max-width: 16ch;
+    max-width: 22ch;
     padding: auto;
 }
 
 .hero-sub {
-    margin-top: 40px;
-    font-size: 19px;
+    margin-top: 32px; /* 32px gap from heading */
+    font-size: 22px; /* 22px description */
     color: var(--ink-soft);
     max-width: 54ch;
     line-height: 1.6;
@@ -357,9 +364,9 @@ h1 {
     justify-content: center;
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: 15px;
-    padding: 14px 28px;
-    border-radius: 8px;
+    font-size: 18px;
+    padding: 16px 32px;
+    border-radius: 9999px; /* Pill buttons for premium Framer style */
     text-decoration: none;
     cursor: pointer;
     border: 1px solid transparent;
@@ -407,7 +414,8 @@ h1 {
 
 /* SECTION SCAFFOLD */
 section {
-    padding: 100px 0;
+    padding-top: 140px;
+    padding-bottom: 0;
 }
 
 .section-head {
@@ -525,13 +533,19 @@ body.light-theme .skill-card:hover {
 }
 
 /* PROJECTS */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 100px;
+}
+
 .project {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 24px; /* 24px radius as requested */
     background: var(--bg-panel);
-    margin-bottom: 24px;
     overflow: hidden;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -757,6 +771,7 @@ textarea {
 }
 
 footer {
+    margin-top: 120px; /* 120px spacing from Contact section as requested */
     padding: 48px 0;
     text-align: center;
     font-family: var(--font-mono);
@@ -783,7 +798,13 @@ footer {
     }
 
     h1 {
-        font-size: clamp(2.4rem, 8vw, 3.2rem);
+        font-size: 56px; /* tablet size */
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 42px; /* mobile size */
     }
 }
 
@@ -984,7 +1005,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 32px;
+    padding: 18px 32px; /* padding 18px 32px as requested */
     transition: all 0.3s ease;
 }
 
@@ -1028,12 +1049,12 @@ body.dark-theme .floating-nav-container {
 .floating-links-list {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 32px; /* gap: 32px as requested */
 }
 
 .floating-links-list a {
     text-decoration: none;
-    font-size: 15px;
+    font-size: 16px; /* font-size 16px as requested */
     font-weight: 600;
     color: #475569;
     transition: color 0.2s ease;

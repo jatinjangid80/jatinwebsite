@@ -151,8 +151,7 @@ export default function Home() {
 
   // Removed typewriter effect so text appears instantly
   const eyebrow = "AVAILABLE FOR FREELANCE WORK";
-  const h1Text = "Full-stack developer building web products end to end.";
-  const subText = "I design, build, and ship websites, dashboards, and small apps — from first commit to a live deployment your customers actually use.";
+
 
   // Local card hover spotlight tracking
   const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -260,128 +259,177 @@ export default function Home() {
 
       {/* HERO CONTAINER (Clean Full-Width Original Layout) */}
       <div className="wrap pt-40 pb-28 md:pt-48 flex flex-col justify-center items-start">
-        {/* Pill Eyebrow */}
-        <div
-          className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100/30 text-indigo-600 font-mono text-[12px] font-bold tracking-wide uppercase mb-8 dark:bg-indigo-950/40 dark:border-indigo-900/50"
-          style={{ borderColor: activeColor, color: activeColor }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: activeColor }} />
-          {eyebrow}
-          {eyebrow.length < "AVAILABLE FOR FREELANCE WORK".length && <span className="blinking-cursor">|</span>}
-        </div>
-
-        <h1 className="font-display font-bold text-slate-900 dark:text-white leading-[1.08] tracking-tight mb-10 max-w-[22ch] text-5xl md:text-6xl lg:text-7xl" style={{ minHeight: '140px' }}>
-          {h1Text}
-          {eyebrow.length === "AVAILABLE FOR FREELANCE WORK".length &&
-            h1Text.length < "Full-stack developer building web products end to end.".length &&
-            <span className="blinking-cursor">|</span>}
-        </h1>
-
-        <p className="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-normal leading-relaxed max-w-[55ch] mb-14" style={{ minHeight: '60px' }}>
-          {subText}
-          {h1Text.length === "Full-stack developer building web products end to end.".length &&
-            subText.length < "I design, build, and ship websites, dashboards, and small apps — from first commit to a live deployment your customers actually use.".length &&
-            <span className="blinking-cursor">|</span>}
-        </p>
-
-        <div className="flex gap-6 items-center flex-wrap mt-4">
-          <a
-            href="#projects"
-            onClick={(e) => scrollToSection(e, 'projects')}
-            className="group relative inline-flex items-center gap-3 font-semibold text-lg px-12 py-5 rounded-full transition-all duration-300 shadow-xl magnetic-target overflow-hidden"
-            style={{
-              background: `linear-gradient(135deg, ${activeColor}, #7C3AED)`,
-              color: '#fff',
-              boxShadow: `0 8px 32px ${activeColor}66`,
-              letterSpacing: '-0.01em',
-            }}
+        <div className="hero-content">
+          {/* Pill Eyebrow */}
+          <div
+            className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100/30 text-indigo-600 font-mono text-[14px] font-bold tracking-wide uppercase mb-6 dark:bg-indigo-950/40 dark:border-indigo-900/50"
+            style={{ borderColor: activeColor, color: activeColor }}
           >
-            <span>View My Work</span>
-            <span className="transition-transform duration-300 group-hover:translate-x-1.5 text-xl">&rarr;</span>
-          </a>
-          <a
-            href="#contact"
-            onClick={(e) => scrollToSection(e, 'contact')}
-            className="inline-flex items-center gap-3 font-semibold text-lg px-12 py-5 rounded-full border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105"
-            style={{
-              borderColor: `${activeColor}66`,
-              color: 'var(--ink)',
-              background: `${activeColor}12`,
-              letterSpacing: '-0.01em',
-            }}
-          >
-            Contact Me
-          </a>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: activeColor }} />
+            {eyebrow}
+          </div>
+
+          <h1 className="font-display font-bold text-slate-900 dark:text-white leading-[1.08] tracking-tight mb-8">
+            Hi, I'm Jatin 👋<br /><br />
+            Full-Stack Developer<br />
+            building modern web products<br />
+            for startups & businesses.
+          </h1>
+
+          <p className="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-normal leading-relaxed mb-10">
+            I design and develop fast, scalable websites,<br />
+            SaaS products, CRM systems, AI automations,<br />
+            and modern web applications.
+          </p>
+
+          <div className="hero-ctas">
+            <a
+              href="#projects"
+              onClick={(e) => scrollToSection(e, 'projects')}
+              className="group relative inline-flex items-center gap-3 font-semibold px-12 py-5 transition-all duration-300 shadow-xl magnetic-target overflow-hidden btn btn-primary"
+              style={{
+                color: '#fff',
+                boxShadow: `0 8px 32px ${activeColor}66`,
+                letterSpacing: '-0.01em',
+              }}
+            >
+              <span>View Projects</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1.5 text-xl">&rarr;</span>
+            </a>
+            <a
+              href="#contact"
+              onClick={(e) => scrollToSection(e, 'contact')}
+              className="inline-flex items-center gap-3 font-semibold px-12 py-5 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
+              style={{
+                borderColor: `${activeColor}66`,
+                color: 'var(--ink)',
+                background: `${activeColor}12`,
+                letterSpacing: '-0.01em',
+              }}
+            >
+              Book a Call
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 font-semibold px-12 py-5 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
+              style={{
+                borderColor: `${activeColor}44`,
+                color: 'var(--ink)',
+                background: `transparent`,
+                letterSpacing: '-0.01em',
+              }}
+            >
+              Download Resume
+            </a>
+          </div>
         </div>
       </div>
-
       {/* ORIGINAL PORTFOLIO SECTIONS */}
       <div className="wrap">
 
         {/* PROJECTS SECTION */}
-        <section id="projects" className="border-t border-[var(--line)] pt-20">
+        <section id="projects" className="border-t border-[var(--line)]">
           <div className="section-head">
             <div className="section-label" style={{ color: activeColor }}>Selected work</div>
             <h2>Things I've shipped</h2>
             <p className="section-desc">A mix of client work and personal builds — live products, not mockups.</p>
           </div>
 
-          <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-            <div className="spotlight-overlay" />
-            <div className="project-inner relative z-10">
-              <div className="project-top">
-                <h3>LookMyHolidays</h3>
-                <span className="project-status">Live</span>
+          <div className="projects-list">
+            <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="project-inner relative z-10">
+                <div className="project-top">
+                  <h3>LookMyHolidays</h3>
+                  <span className="project-status">Live</span>
+                </div>
+                <p>A travel agency website handling package listings, SEO, and customer-facing content, deployed with a custom domain.</p>
+                <div className="stack-row">
+                  <span className="stack-tag">React</span>
+                  <span className="stack-tag">Vercel</span>
+                  <span className="stack-tag">SEO</span>
+                </div>
+                <a href="https://www.lookmyholiday.co.in/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+                  Visit site
+                </a>
               </div>
-              <p>A travel agency website handling package listings, SEO, and customer-facing content, deployed with a custom domain.</p>
-              <div className="stack-row">
-                <span className="stack-tag">React</span>
-                <span className="stack-tag">Vercel</span>
-                <span className="stack-tag">SEO</span>
+            </div>
+
+            <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="project-inner relative z-10">
+                <div className="project-top">
+                  <h3>CRM Dashboard</h3>
+                  <span className="project-status">Live</span>
+                </div>
+                <p>An internal CRM for managing employees and client records, server-rendered and deployed on Vercel.</p>
+                <div className="stack-row">
+                  <span className="stack-tag">TanStack Start</span>
+                  <span className="stack-tag">Nitro SSR</span>
+                  <span className="stack-tag">Vercel</span>
+                </div>
+                <a href="https://crm-lookmywebsites.vercel.app" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+                  Visit dashboard
+                </a>
               </div>
-              <a href="https://www.lookmyholiday.co.in/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
-                Visit site
-              </a>
+            </div>
+
+            <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="project-inner relative z-10">
+                <div className="project-top">
+                  <h3>Space Escape Runner</h3>
+                  <span className="project-status">In progress</span>
+                </div>
+                <p>A mobile arcade game built with React Native and Expo, currently in active development.</p>
+                <div className="stack-row">
+                  <span className="stack-tag">React Native</span>
+                  <span className="stack-tag">Expo</span>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-            <div className="spotlight-overlay" />
-            <div className="project-inner relative z-10">
-              <div className="project-top">
-                <h3>CRM Dashboard</h3>
-                <span className="project-status">Live</span>
-              </div>
-              <p>An internal CRM for managing employees and client records, server-rendered and deployed on Vercel.</p>
-              <div className="stack-row">
-                <span className="stack-tag">TanStack Start</span>
-                <span className="stack-tag">Nitro SSR</span>
-                <span className="stack-tag">Vercel</span>
-              </div>
-              <a href="https://crm-lookmywebsites.vercel.app" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
-                Visit dashboard
-              </a>
-            </div>
+        {/* SERVICES SECTION */}
+        <section id="services" className="border-t border-[var(--line)]">
+          <div className="section-head">
+            <div className="section-label" style={{ color: activeColor }}>Services</div>
+            <h2>How I can help</h2>
+            <p className="section-desc">Fixed-scope engagements for small businesses that need a working site or tool — not a maintenance contract.</p>
           </div>
-
-          <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-            <div className="spotlight-overlay" />
-            <div className="project-inner relative z-10">
-              <div className="project-top">
-                <h3>Space Escape Runner</h3>
-                <span className="project-status">In progress</span>
+          <div className="services-grid">
+            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <h3>Business Website</h3>
+                <p>A fast, SEO-ready site for your business — built, deployed, and connected to your domain.</p>
+                <div className="service-price">Custom Quote</div>
               </div>
-              <p>A mobile arcade game built with React Native and Expo, currently in active development.</p>
-              <div className="stack-row">
-                <span className="stack-tag">React Native</span>
-                <span className="stack-tag">Expo</span>
+            </div>
+            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <h3>Custom Dashboard / CRM</h3>
+                <p>An internal tool for managing customers, staff, or operations, tailored to how your team actually works.</p>
+                <div className="service-price">Custom Quote</div>
+              </div>
+            </div>
+            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <h3>Website Audit & Fixes</h3>
+                <p>A full pass on an existing site — broken SEO, dead content, performance issues — with a fix list and implementation.</p>
+                <div className="service-price">Custom Quote</div>
               </div>
             </div>
           </div>
         </section>
 
         {/* ABOUT / SKILLS SECTION */}
-        <section id="skills" className="border-t border-[var(--line)] pt-20">
+        <section id="skills" className="border-t border-[var(--line)]">
           <div className="section-head">
             <div className="section-label" style={{ color: activeColor }}>Capabilities</div>
             <h2>What I work with</h2>
@@ -433,43 +481,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SERVICES SECTION */}
-        <section id="services" className="border-t border-[var(--line)] pt-20">
-          <div className="section-head">
-            <div className="section-label" style={{ color: activeColor }}>Services</div>
-            <h2>How I can help</h2>
-            <p className="section-desc">Fixed-scope engagements for small businesses that need a working site or tool — not a maintenance contract.</p>
-          </div>
-          <div className="services-grid">
-            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <h3>Business Website</h3>
-                <p>A fast, SEO-ready site for your business — built, deployed, and connected to your domain.</p>
-                <div className="service-price">Custom Quote</div>
-              </div>
-            </div>
-            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <h3>Custom Dashboard / CRM</h3>
-                <p>An internal tool for managing customers, staff, or operations, tailored to how your team actually works.</p>
-                <div className="service-price">Custom Quote</div>
-              </div>
-            </div>
-            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <h3>Website Audit & Fixes</h3>
-                <p>A full pass on an existing site — broken SEO, dead content, performance issues — with a fix list and implementation.</p>
-                <div className="service-price">Custom Quote</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CONTACT SECTION */}
-        <section id="contact" className="border-t border-[var(--line)] pt-20 pb-20">
+        <section id="contact" className="border-t border-[var(--line)]">
           <div className="contact-grid">
             <div className="contact-left">
               <div className="section-label" style={{ color: activeColor }}>Get in touch</div>
@@ -504,7 +517,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
       </div>
 
       {/* FOOTER */}
