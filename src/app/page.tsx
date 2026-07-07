@@ -158,7 +158,7 @@ export default function Home() {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const y = e.clientY - rect.top; 
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
   };
@@ -208,6 +208,28 @@ export default function Home() {
       <header className="floating-header">
         <div className="floating-nav-container">
           <a href="#" className="floating-logo-link">
+            <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '33px', height: '33px' }}>
+              <defs>
+                <linearGradient id="j-logo-grad" x1="1" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#be377bff" />
+                  <stop offset="100%" stopColor="#7127a3ff" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 44 24 L 76 24 L 76 60 A 28 28 0 0 1 20 60"
+                stroke="url(#j-logo-grad)"
+                strokeWidth="10"
+                strokeLinecap="butt"
+                strokeLinejoin="miter"
+              />
+              <path
+                d="M 44 42 L 60 42 L 60 60 A 12 12 0 0 1 36 60"
+                stroke="url(#j-logo-grad)"
+                strokeWidth="10"
+                strokeLinecap="butt"
+                strokeLinejoin="miter"
+              />
+            </svg>
             <div className="floating-logo-text">
               <span className="logo-jatin">Jatin</span>
             </div>
