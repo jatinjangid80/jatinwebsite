@@ -44,7 +44,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen relative overflow-x-hidden">
+      <body className="min-h-screen relative overflow-x-hidden light-theme">
         {children}
       </body>
     </html>

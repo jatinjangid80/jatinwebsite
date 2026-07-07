@@ -39,7 +39,7 @@ const interpolateColors = (color1: string, color2: string, factor: number) => {
 };
 
 export default function Home() {
-  const [isLight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(true);
   const [formStatus, setFormStatus] = useState('');
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
@@ -51,12 +51,14 @@ export default function Home() {
   // 1. Theme sync
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
+    if (savedTheme === 'dark') {
+      setIsLight(false);
+      document.body.classList.remove('light-theme');
+      document.documentElement.classList.add('dark');
+    } else {
       setIsLight(true);
       document.body.classList.add('light-theme');
       document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
     }
   }, []);
 
