@@ -278,8 +278,13 @@ body.light-theme .theme-toggle .sun-icon {
 
 /* HERO */
 header.hero {
-    padding-top: 180px; /* 80px navbar height + 100px gap */
-    padding-bottom: 120px; /* 120px gap to Projects */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 210px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
     animation: fadeIn 0.8s ease-out forwards;
 }
 
@@ -784,7 +789,8 @@ footer {
     }
 
     header.hero {
-        padding-top: 160px;
+        min-height: 100vh;
+        padding-top: 140px;
         padding-bottom: 80px;
     }
 
@@ -999,10 +1005,12 @@ footer {
     max-width: 1280px;
     height: 76px; /* Height: 72-80px */
     margin: 0 auto;
-    background: #ffffff;
+    background: rgba(11, 15, 25, 0.85); /* Dark default background */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-radius: 9999px; /* Border radius 9999px */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Dark default border */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1010,10 +1018,10 @@ footer {
     transition: all 0.3s ease;
 }
 
-body.dark-theme .floating-nav-container {
-    background: #1e293b;
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+body.light-theme .floating-nav-container {
+    background: rgba(255, 255, 255, 0.8); /* Light override background */
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .floating-logo-link {
@@ -1054,20 +1062,20 @@ body.dark-theme .floating-nav-container {
     text-decoration: none;
     font-size: 16px; /* font-size 16px as requested */
     font-weight: 600;
-    color: #475569;
+    color: #94a3b8; /* Dark default link color */
     transition: color 0.2s ease;
 }
 
-body.dark-theme .floating-links-list a {
-    color: #94a3b8;
+body.light-theme .floating-links-list a {
+    color: #475569; /* Light override link color */
 }
 
 .floating-links-list a:hover {
-    color: var(--accent);
+    color: #38bdf8; /* Dark default link hover */
 }
 
-body.dark-theme .floating-links-list a:hover {
-    color: #38bdf8;
+body.light-theme .floating-links-list a:hover {
+    color: var(--accent); /* Light override link hover */
 }
 
 .floating-actions-container {
@@ -1081,8 +1089,8 @@ body.dark-theme .floating-links-list a:hover {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #475569;
-    border: 1px solid #e2e8f0;
+    color: #cbd5e1; /* Dark default text color */
+    border: 1px solid #334155; /* Dark default border color */
     border-radius: 9999px;
     padding: 10px 22px;
     background: transparent;
@@ -1091,18 +1099,18 @@ body.dark-theme .floating-links-list a:hover {
     transition: all 0.2s ease;
 }
 
-body.dark-theme .floating-btn-hire {
-    color: #cbd5e1;
-    border-color: #334155;
+body.light-theme .floating-btn-hire {
+    color: #475569; /* Light override text color */
+    border-color: #e2e8f0; /* Light override border color */
 }
 
 .floating-btn-hire:hover {
-    background: #f8fafc;
+    background: #1e293b; /* Dark default hover background */
     transform: translateY(-1px);
 }
 
-body.dark-theme .floating-btn-hire:hover {
-    background: #1e293b;
+body.light-theme .floating-btn-hire:hover {
+    background: #f8fafc; /* Light override hover background */
 }
 
 .floating-btn-resume {
