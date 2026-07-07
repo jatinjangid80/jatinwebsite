@@ -257,8 +257,8 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO CONTAINER (Clean Full-Width Original Layout) */}
-      <div className="wrap pt-40 pb-28 md:pt-48 flex flex-col justify-center items-start">
+      {/* HERO CONTAINER */}
+      <header className="hero wrap flex flex-col justify-center items-start">
         <div className="hero-content">
           {/* Pill Eyebrow */}
           <div
@@ -325,7 +325,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </div>
+      </header>
       {/* ORIGINAL PORTFOLIO SECTIONS */}
       <div className="wrap">
 
