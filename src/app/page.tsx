@@ -205,7 +205,7 @@ export default function Home() {
       <ParticleBackground activeColorHex={activeColor} />
 
       {/* NAVIGATION */}
-      <nav className="floating-header">
+      <header className="floating-header">
         <div className="floating-nav-container">
           <a href="#" className="floating-logo-link">
             <div className="floating-logo-text">
@@ -247,7 +247,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </nav>
+      </header>
 
       {/* HERO CONTAINER */}
       <header className="hero wrap flex flex-col justify-center items-start">
