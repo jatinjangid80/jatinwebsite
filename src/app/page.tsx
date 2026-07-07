@@ -205,43 +205,35 @@ export default function Home() {
       <ParticleBackground activeColorHex={activeColor} />
 
       {/* NAVIGATION */}
-      <header className="floating-header">
+      <nav className="floating-header">
         <div className="floating-nav-container">
           <a href="#" className="floating-logo-link">
             <div className="floating-logo-text">
-              <span className="logo-look">LOOK</span>
-              <span className="logo-my">MY</span>
-              <span className="logo-holiday">Holiday</span>
+              <span className="logo-jatin">Jatin</span>
             </div>
-            <svg className="w-5 h-5 text-[#2563EB] transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ display: 'inline', width: '20px', height: '20px', marginLeft: '2px' }}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
           </a>
           
           <div className="floating-links-list">
-            <a href="#" className="magnetic-target">Home</a>
-            <a href="#" className="magnetic-target">Destinations</a>
-            <a href="#" className="magnetic-target">Packages</a>
-            <a href="#" className="magnetic-target">Visa</a>
-            <a href="#" className="magnetic-target">About</a>
-            <a href="#" className="magnetic-target">Gallery</a>
-            <a href="#" className="magnetic-target">Blog</a>
-            <a href="#" className="magnetic-target">Contact</a>
+            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="magnetic-target">Projects</a>
+            <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')} className="magnetic-target">Skills</a>
+            <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="magnetic-target">Services</a>
+            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="magnetic-target">About</a>
+            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="magnetic-target">Contact</a>
           </div>
 
           <div className="floating-actions-container">
-            <button className="floating-btn-signin magnetic-target">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ display: 'inline', width: '16px', height: '16px', marginRight: '6px' }}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-              Sign In
-            </button>
-            <button className="floating-btn-book magnetic-target">
-              Book Now
-            </button>
+            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="floating-btn-hire magnetic-target">
+              Hire Me
+            </a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="floating-btn-resume magnetic-target" style={{ backgroundColor: activeColor }}>
+              Resume
+            </a>
             
             <button
               className="theme-toggle magnetic-target"
               id="themeToggle"
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              style={{ marginLeft: '8px' }}
             >
               {isLight ? (
                 <svg className="sun-icon" style={{ display: 'block' }} viewBox="0 0 24 24">
@@ -255,7 +247,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </header>
+      </nav>
 
       {/* HERO CONTAINER */}
       <header className="hero wrap flex flex-col justify-center items-start">

@@ -11,7 +11,7 @@ import { generateParticlesData } from '../lib/particles';
 import vertexShader from '../shaders/particle.vert';
 import fragmentShader from '../shaders/particle.frag';
 
-const PARTICLE_COUNT = 10000;
+const PARTICLE_COUNT = 1200;
 
 // Configurable Spring Physics Constants (attraction, damping, mass)
 const SPRING_CONFIG: SpringConfig = {

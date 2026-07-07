@@ -988,25 +988,27 @@ footer {
 /* CUSTOM FLOATING NAVBAR */
 .floating-header {
     position: fixed;
-    top: 24px;
+    top: 28px; /* Top margin: 24-32px */
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 0 24px;
+    padding: 0;
     animation: fadeIn 0.8s ease-out forwards;
 }
 
 .floating-nav-container {
-    max-width: 1200px;
+    width: 90%; /* Width: 85-90% */
+    max-width: 1280px;
+    height: 76px; /* Height: 72-80px */
     margin: 0 auto;
     background: #ffffff;
-    border-radius: 9999px;
+    border-radius: 9999px; /* Border radius 9999px */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(0, 0, 0, 0.06);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 32px; /* padding 18px 32px as requested */
+    padding: 0 40px; /* Left/right padding: 32-40px */
     transition: all 0.3s ease;
 }
 
@@ -1026,25 +1028,22 @@ body.dark-theme .floating-nav-container {
 .floating-logo-text {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 22px;
-    letter-spacing: -0.02em;
+    font-size: 26px; /* Adjusted to look clean and modern */
+    letter-spacing: -0.03em;
     display: flex;
     align-items: baseline;
 }
 
-.floating-logo-text .logo-look {
-    color: #2563EB;
+.floating-logo-text .logo-jatin {
+    font-weight: 700;
+    background: linear-gradient(135deg, #00E5A8 0%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: filter 0.3s ease;
 }
 
-.floating-logo-text .logo-my {
-    color: #FF6B00;
-}
-
-.floating-logo-text .logo-holiday {
-    color: #2563EB;
-    font-style: italic;
-    font-weight: 500;
-    margin-left: 2px;
+.floating-logo-text:hover .logo-jatin {
+    filter: brightness(1.1);
 }
 
 .floating-links-list {
@@ -1066,7 +1065,7 @@ body.dark-theme .floating-links-list a {
 }
 
 .floating-links-list a:hover {
-    color: #2563EB;
+    color: var(--accent);
 }
 
 body.dark-theme .floating-links-list a:hover {
@@ -1079,10 +1078,9 @@ body.dark-theme .floating-links-list a:hover {
     gap: 16px;
 }
 
-.floating-btn-signin {
-    display: flex;
+.floating-btn-hire {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
     font-size: 15px;
     font-weight: 600;
     color: #475569;
@@ -1091,24 +1089,25 @@ body.dark-theme .floating-links-list a:hover {
     padding: 10px 22px;
     background: transparent;
     cursor: pointer;
+    text-decoration: none;
     transition: all 0.2s ease;
 }
 
-body.dark-theme .floating-btn-signin {
+body.dark-theme .floating-btn-hire {
     color: #cbd5e1;
     border-color: #334155;
 }
 
-.floating-btn-signin:hover {
+.floating-btn-hire:hover {
     background: #f8fafc;
+    transform: translateY(-1px);
 }
 
-body.dark-theme .floating-btn-signin:hover {
+body.dark-theme .floating-btn-hire:hover {
     background: #1e293b;
 }
 
-.floating-btn-book {
-    background: #FF6B00;
+.floating-btn-resume {
     color: #ffffff;
     font-size: 15px;
     font-weight: 700;
@@ -1116,14 +1115,18 @@ body.dark-theme .floating-btn-signin:hover {
     border-radius: 9999px;
     padding: 11px 26px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+    text-decoration: none;
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
 }
 
-.floating-btn-book:hover {
-    background: #e66000;
+.floating-btn-resume:hover {
+    opacity: 0.9;
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(255, 107, 0, 0.3);
+    box-shadow: 0 6px 16px rgba(56, 189, 248, 0.3);
 }
 
 @media (max-width: 992px) {
