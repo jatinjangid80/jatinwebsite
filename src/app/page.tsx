@@ -77,34 +77,17 @@ export default function Home() {
     }
   };
 
-  // 2. 60 FPS Color Interpolation cycle
+  // 2. Static color setup
   useEffect(() => {
-    let start: number | null = null;
-    const duration = 2500; // transition time in ms (2.5s) per color
+    const staticColor = '#2563EB';
+    setActiveColor(staticColor);
 
-    const animateColors = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const elapsed = timestamp - start;
-      const progress = elapsed % (duration * PALETTE.length);
-      const index = Math.floor(progress / duration);
-      const nextIndex = (index + 1) % PALETTE.length;
-      const factor = (progress % duration) / duration;
-
-      const interpolated = interpolateColors(PALETTE[index], PALETTE[nextIndex], factor);
-      setActiveColor(interpolated);
-
-      document.documentElement.style.setProperty('--active-color', interpolated);
-      const bigint = parseInt(interpolated.replace('#', ''), 16);
-      const r = (bigint >> 16) & 255;
-      const g = (bigint >> 8) & 255;
-      const b = bigint & 255;
-      document.documentElement.style.setProperty('--accent-soft', `rgba(${r}, ${g}, ${b}, 0.15)`);
-
-      requestAnimationFrame(animateColors);
-    };
-
-    const animId = requestAnimationFrame(animateColors);
-    return () => cancelAnimationFrame(animId);
+    document.documentElement.style.setProperty('--active-color', staticColor);
+    const bigint = parseInt(staticColor.replace('#', ''), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    document.documentElement.style.setProperty('--accent-soft', `rgba(${r}, ${g}, ${b}, 0.15)`);
   }, []);
 
   // 3. Click ripple effect and magnetics follow setup
@@ -223,40 +206,42 @@ export default function Home() {
       <ParticleBackground activeColorHex={activeColor} />
 
       {/* NAVIGATION */}
-      <nav className="border-b border-[var(--line)]">
-        <div className="wrap">
-          <div className="logo font-bold text-xl tracking-wider text-indigo-600 magnetic-target">
-            Jatin
-          </div>
-          <div className="nav-mid" style={{ display: 'flex', alignItems: 'center' }}>
-            <div className="navlinks">
-              <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="magnetic-target">Projects</a>
-              <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')} className="magnetic-target">Skills</a>
-              <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="magnetic-target">Services</a>
-              <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="magnetic-target">Contact</a>
+      <header className="fixed top-6 left-0 right-0 z-50 px-4">
+        <div className="max-w-[1100px] mx-auto bg-white rounded-full shadow-lg shadow-black/5 border border-slate-100 flex items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-1">
+            <div className="font-display font-bold text-2xl tracking-tight flex items-baseline">
+              <span className="text-[#2563EB]">LOOK</span>
+              <span className="text-[#FF6B00]">MY</span>
+              <span className="text-[#2563EB] italic font-medium ml-1">Holiday</span>
             </div>
-            <button
-              className="theme-toggle magnetic-target"
-              id="themeToggle"
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-            >
-              {isLight ? (
-                <svg className="sun-icon" style={{ display: 'block' }} viewBox="0 0 24 24">
-                  <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z" />
-                </svg>
-              ) : (
-                <svg className="moon-icon" style={{ display: 'block' }} viewBox="0 0 24 24">
-                  <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
-                </svg>
-              )}
+            <svg className="w-6 h-6 text-[#2563EB] transform -rotate-45 -translate-y-2 -translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+          </div>
+          
+          <div className="hidden lg:flex items-center gap-7 text-[15px] font-semibold text-slate-700">
+            <a href="#" className="hover:text-[#2563EB] transition-colors">Home</a>
+            <a href="#" className="hover:text-[#2563EB] transition-colors">Destinations</a>
+            <a href="#" className="hover:text-[#2563EB] transition-colors">Packages</a>
+            <a href="#" className="hover:text-[#2563EB] transition-colors">Visa</a>
+            <a href="#" className="hover:text-[#2563EB] transition-colors">About</a>
+            <a href="#" className="hover:text-[#2563EB] transition-colors">Gallery</a>
+            <a href="#" className="hover:text-[#2563EB] transition-colors">Blog</a>
+            <a href="#" className="hover:text-[#2563EB] transition-colors">Contact</a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button className="hidden md:flex items-center gap-2 text-[15px] font-semibold text-slate-700 border border-slate-200 rounded-full px-5 py-2 hover:bg-slate-50 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+              Sign In
+            </button>
+            <button className="bg-[#FF6B00] text-white text-[15px] font-bold rounded-full px-6 py-2 shadow-md shadow-orange-500/20 hover:bg-[#E66000] transition-colors">
+              Book Now
             </button>
           </div>
         </div>
-      </nav>
+      </header>
 
       {/* HERO CONTAINER (Clean Full-Width Original Layout) */}
-      <div className="wrap py-28 md:py-40 flex flex-col justify-center items-start">
+      <div className="wrap pt-40 pb-28 md:pt-48 flex flex-col justify-center items-start">
         {/* Pill Eyebrow */}
         <div
           className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100/30 text-indigo-600 font-mono text-[12px] font-bold tracking-wide uppercase mb-8 dark:bg-indigo-950/40 dark:border-indigo-900/50"
