@@ -305,7 +305,7 @@ header.hero {
 }
 
 .hero-content {
-    max-width: 720px;
+    max-width: 960px;
     width: 100%;
 }
 
@@ -315,8 +315,6 @@ h1 {
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
-    max-width: 22ch;
-    padding: auto;
 }
 
 .hero-sub {
