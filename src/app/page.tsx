@@ -77,7 +77,7 @@ export default function Home() {
     }
   };
 
-  // 2. Static color setup
+  // 2. Static blue theme setup
   useEffect(() => {
     const staticColor = '#2563EB';
     setActiveColor(staticColor);
@@ -108,22 +108,22 @@ export default function Home() {
       const el = e.currentTarget as HTMLElement;
       const rect = el.getBoundingClientRect();
       const me = e as MouseEvent;
-      
+
       const currentX = parseFloat(el.dataset.magneticX || '0');
       const currentY = parseFloat(el.dataset.magneticY || '0');
-      
+
       const baseLeft = rect.left - currentX;
       const baseTop = rect.top - currentY;
-      
+
       const x = me.clientX - baseLeft - rect.width / 2;
       const y = me.clientY - baseTop - rect.height / 2;
-      
+
       const targetX = x * 0.25;
       const targetY = y * 0.25;
-      
+
       el.dataset.magneticX = targetX.toString();
       el.dataset.magneticY = targetY.toString();
-      
+
       el.style.transform = `translate(${targetX}px, ${targetY}px)`;
       el.style.transition = 'transform 0.15s ease-out';
     };
@@ -168,7 +168,7 @@ export default function Home() {
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('Sending message...');
-    
+
     const formData = new FormData(e.currentTarget);
     const result = await submitContactForm(formData);
 
@@ -178,7 +178,7 @@ export default function Home() {
       setFormStatus('');
       setShowSuccessPopup(true);
       (e.target as HTMLFormElement).reset();
-      
+
       // Auto-hide popup after 3.5 seconds
       setTimeout(() => {
         setShowSuccessPopup(false);
@@ -206,35 +206,53 @@ export default function Home() {
       <ParticleBackground activeColorHex={activeColor} />
 
       {/* NAVIGATION */}
-      <header className="fixed top-6 left-0 right-0 z-50 px-4">
-        <div className="max-w-[1100px] mx-auto bg-white rounded-full shadow-lg shadow-black/5 border border-slate-100 flex items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-1">
-            <div className="font-display font-bold text-2xl tracking-tight flex items-baseline">
-              <span className="text-[#2563EB]">LOOK</span>
-              <span className="text-[#FF6B00]">MY</span>
-              <span className="text-[#2563EB] italic font-medium ml-1">Holiday</span>
+      <header className="floating-header">
+        <div className="floating-nav-container">
+          <a href="#" className="floating-logo-link">
+            <div className="floating-logo-text">
+              <span className="logo-look">LOOK</span>
+              <span className="logo-my">MY</span>
+              <span className="logo-holiday">Holiday</span>
             </div>
-            <svg className="w-6 h-6 text-[#2563EB] transform -rotate-45 -translate-y-2 -translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
-          </div>
+            <svg className="w-5 h-5 text-[#2563EB] transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ display: 'inline', width: '20px', height: '20px', marginLeft: '2px' }}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+          </a>
           
-          <div className="hidden lg:flex items-center gap-7 text-[15px] font-semibold text-slate-700">
-            <a href="#" className="hover:text-[#2563EB] transition-colors">Home</a>
-            <a href="#" className="hover:text-[#2563EB] transition-colors">Destinations</a>
-            <a href="#" className="hover:text-[#2563EB] transition-colors">Packages</a>
-            <a href="#" className="hover:text-[#2563EB] transition-colors">Visa</a>
-            <a href="#" className="hover:text-[#2563EB] transition-colors">About</a>
-            <a href="#" className="hover:text-[#2563EB] transition-colors">Gallery</a>
-            <a href="#" className="hover:text-[#2563EB] transition-colors">Blog</a>
-            <a href="#" className="hover:text-[#2563EB] transition-colors">Contact</a>
+          <div className="floating-links-list">
+            <a href="#" className="magnetic-target">Home</a>
+            <a href="#" className="magnetic-target">Destinations</a>
+            <a href="#" className="magnetic-target">Packages</a>
+            <a href="#" className="magnetic-target">Visa</a>
+            <a href="#" className="magnetic-target">About</a>
+            <a href="#" className="magnetic-target">Gallery</a>
+            <a href="#" className="magnetic-target">Blog</a>
+            <a href="#" className="magnetic-target">Contact</a>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button className="hidden md:flex items-center gap-2 text-[15px] font-semibold text-slate-700 border border-slate-200 rounded-full px-5 py-2 hover:bg-slate-50 transition-colors">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+          <div className="floating-actions-container">
+            <button className="floating-btn-signin magnetic-target">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ display: 'inline', width: '16px', height: '16px', marginRight: '6px' }}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
               Sign In
             </button>
-            <button className="bg-[#FF6B00] text-white text-[15px] font-bold rounded-full px-6 py-2 shadow-md shadow-orange-500/20 hover:bg-[#E66000] transition-colors">
+            <button className="floating-btn-book magnetic-target">
               Book Now
+            </button>
+            
+            <button
+              className="theme-toggle magnetic-target"
+              id="themeToggle"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              style={{ marginLeft: '8px' }}
+            >
+              {isLight ? (
+                <svg className="sun-icon" style={{ display: 'block' }} viewBox="0 0 24 24">
+                  <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z" />
+                </svg>
+              ) : (
+                <svg className="moon-icon" style={{ display: 'block' }} viewBox="0 0 24 24">
+                  <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
@@ -510,7 +528,7 @@ export default function Home() {
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center relative border border-slate-200 dark:border-slate-800"
             >
-              <div 
+              <div
                 className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white shadow-lg"
                 style={{ background: `linear-gradient(135deg, ${activeColor}, #7C3AED)` }}
               >
