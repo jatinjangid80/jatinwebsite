@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import ParticleBackground from '../components/ParticleBackground';
-import { submitContactForm } from './actions';
-import { motion, AnimatePresence } from 'framer-motion';
+import ContactSection from '../components/ContactSection';
+import FooterSection from '../components/FooterSection';
+import { motion } from 'framer-motion';
 
 const PALETTE = ['#2563EB', '#7C3AED', '#EC4899', '#F97316', '#FACC15', '#10B981', '#06B6D4'];
 
@@ -40,8 +41,6 @@ const interpolateColors = (color1: string, color2: string, factor: number) => {
 
 export default function Home() {
   const [isLight, setIsLight] = useState(true);
-  const [formStatus, setFormStatus] = useState('');
-  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   // Active animated color state
   const [activeColor, setActiveColor] = useState(PALETTE[0]);
@@ -90,18 +89,8 @@ export default function Home() {
     document.documentElement.style.setProperty('--accent-soft', `rgba(${r}, ${g}, ${b}, 0.15)`);
   }, []);
 
-  // 3. Click ripple effect and magnetics follow setup
+  // 3. Magnetic follow setup
   useEffect(() => {
-    const handleMouseDown = (e: MouseEvent) => {
-      const ripple = document.createElement('div');
-      ripple.className = 'cursor-ripple';
-      ripple.style.left = e.clientX + 'px';
-      ripple.style.top = e.clientY + 'px';
-      document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-    };
-    document.addEventListener('mousedown', handleMouseDown);
-
     // Magnetic follow logic
     const magneticElements = document.querySelectorAll('.magnetic-target');
     const handleMagneticMove = (e: Event) => {
@@ -141,7 +130,6 @@ export default function Home() {
     });
 
     return () => {
-      document.removeEventListener('mousedown', handleMouseDown);
       magneticElements.forEach(el => {
         el.removeEventListener('mousemove', handleMagneticMove);
         el.removeEventListener('mouseleave', handleMagneticLeave);
@@ -153,6 +141,12 @@ export default function Home() {
   const eyebrow = "AVAILABLE FOR FREELANCE WORK";
 
 
+  const scrollToSection = (id: string) => {
+    if (!id || id === 'top') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   // Local card hover spotlight tracking
   const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -163,35 +157,7 @@ export default function Home() {
     card.style.setProperty('--mouse-y', `${y}px`);
   };
 
-  // Contact Form Submission
-  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormStatus('Sending message...');
 
-    const formData = new FormData(e.currentTarget);
-    const result = await submitContactForm(formData);
-
-    if (result.error) {
-      setFormStatus(result.error);
-    } else {
-      setFormStatus('');
-      setShowSuccessPopup(true);
-      (e.target as HTMLFormElement).reset();
-
-      // Auto-hide popup after 3.5 seconds
-      setTimeout(() => {
-        setShowSuccessPopup(false);
-      }, 3500);
-    }
-  };
-
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <>
@@ -233,18 +199,18 @@ export default function Home() {
           </a>
 
           <div className="floating-links-list">
-            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="magnetic-target">Projects</a>
-            <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')} className="magnetic-target">Skills</a>
-            <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="magnetic-target">Services</a>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="magnetic-target">About</a>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="magnetic-target">Contact</a>
+            <a href="#projects" onClick={e => { e.preventDefault(); scrollToSection('projects'); }} className="magnetic-target">Projects</a>
+            <a href="#skills" onClick={e => { e.preventDefault(); scrollToSection('skills'); }} className="magnetic-target">Skills</a>
+            <a href="#services" onClick={e => { e.preventDefault(); scrollToSection('services'); }} className="magnetic-target">Services</a>
+            <a href="#contact" onClick={e => { e.preventDefault(); scrollToSection('contact'); }} className="magnetic-target">About</a>
+            <a href="#contact" onClick={e => { e.preventDefault(); scrollToSection('contact'); }} className="magnetic-target">Contact</a>
           </div>
 
           <div className="floating-actions-container">
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="floating-btn-hire magnetic-target">
+            <a href="#contact" onClick={e => { e.preventDefault(); scrollToSection('contact'); }} className="floating-btn-hire magnetic-target">
               Hire Me
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="floating-btn-resume magnetic-target" style={{ backgroundColor: activeColor }}>
+            <a href="https://drive.google.com/uc?export=download&id=141wwqVCfidnsv5iwHF2wbZaSarzLvSmF" target="Resume" rel="noopener noreferrer" className="floating-btn-resume magnetic-target" style={{ backgroundColor: activeColor }}>
               Resume
             </a>
 
@@ -296,7 +262,7 @@ export default function Home() {
           <div className="hero-ctas">
             <a
               href="#projects"
-              onClick={(e) => scrollToSection(e, 'projects')}
+              onClick={e => { e.preventDefault(); scrollToSection('projects'); }}
               className="group relative inline-flex items-center gap-3 font-semibold px-12 py-5 transition-all duration-300 shadow-xl magnetic-target overflow-hidden btn btn-primary"
               style={{
                 color: '#fff',
@@ -309,7 +275,7 @@ export default function Home() {
             </a>
             <a
               href="#contact"
-              onClick={(e) => scrollToSection(e, 'contact')}
+              onClick={e => { e.preventDefault(); scrollToSection('contact'); }}
               className="inline-flex items-center gap-3 font-semibold px-12 py-5 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
               style={{
                 borderColor: `${activeColor}66`,
@@ -321,8 +287,8 @@ export default function Home() {
               Book a Call
             </a>
             <a
-              href="/resume.pdf"
-              target="_blank"
+              href="https://drive.google.com/uc?export=download&id=141wwqVCfidnsv5iwHF2wbZaSarzLvSmF"
+              target="Resume"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 font-semibold px-12 py-5 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
               style={{
@@ -492,88 +458,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CONTACT SECTION */}
-        <section id="contact" className="border-t border-[var(--line)]">
-          <div className="contact-grid">
-            <div className="contact-left">
-              <div className="section-label" style={{ color: activeColor }}>Get in touch</div>
-              <h2>Tell me about your project</h2>
-              <p>Send me a message below and I'll get back to you within 24 hours.</p>
-              <div className="contact-detail">jatinnjangid72973@gmail.com</div>
-              <div className="contact-detail">Jaipur, India</div>
-            </div>
-            <div className="contact-right">
-              <form onSubmit={handleContactSubmit}>
-                <div>
-                  <label htmlFor="name">Name</label>
-                  <input id="name" name="name" type="text" required />
-                </div>
-                <div>
-                  <label htmlFor="email">Email</label>
-                  <input id="email" name="email" type="email" required />
-                </div>
-                <div>
-                  <label htmlFor="message">Project details</label>
-                  <textarea id="message" name="message" required placeholder="What are you looking to build?"></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary magnetic-target"
-                  style={{ backgroundColor: activeColor }}
-                >
-                  Send message
-                </button>
-                <div className="form-status">{formStatus}</div>
-              </form>
-            </div>
-          </div>
-        </section>
+        {/* CONTACT SECTION — Premium redesign */}
+        <ContactSection activeColor={activeColor} />
       </div>
 
-      {/* FOOTER */}
-      <footer className="border-t border-[var(--line)]">
-        <div className="wrap">Jatin — built and maintained by Jatin Jangid</div>
-      </footer>
-
-      {/* SUCCESS POPUP MODAL */}
-      <AnimatePresence>
-        {showSuccessPopup && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: -20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center relative border border-slate-200 dark:border-slate-800"
-            >
-              <div
-                className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white shadow-lg"
-                style={{ background: `linear-gradient(135deg, ${activeColor}, #7C3AED)` }}
-              >
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Thank You!</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">
-                Your message has been sent successfully. I'll get back to you soon.
-              </p>
-              <button
-                onClick={() => setShowSuccessPopup(false)}
-                className="w-full py-3 px-4 rounded-xl font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                style={{ backgroundColor: activeColor }}
-              >
-                Got it
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* FOOTER — Premium redesign */}
+      <FooterSection activeColor={activeColor} onScrollToSection={scrollToSection} />
     </>
   );
 }
