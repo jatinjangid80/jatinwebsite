@@ -28,9 +28,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  icons: {
-    icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=", // 1x1 transparent PNG
-  },
 };
 
 export default function RootLayout({
