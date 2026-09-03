@@ -142,9 +142,20 @@ export default function Home() {
 
 
   const scrollToSection = (id: string) => {
-    if (!id || id === 'top') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    if (!id || id === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) {
+      const headerOffset = 90;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   // Local card hover spotlight tracking
@@ -156,8 +167,6 @@ export default function Home() {
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
   };
-
-
 
   return (
     <>
@@ -173,7 +182,7 @@ export default function Home() {
       {/* NAVIGATION */}
       <header className="floating-header">
         <div className="floating-nav-container">
-          <a href="#" className="floating-logo-link">
+          <a href="#" className="floating-logo-link" onClick={e => { e.preventDefault(); scrollToSection('top'); }}>
             <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '33px', height: '33px' }}>
               <defs>
                 <linearGradient id="j-logo-grad" x1="1" y1="0" x2="0" y2="1">
@@ -202,7 +211,7 @@ export default function Home() {
             <a href="#projects" onClick={e => { e.preventDefault(); scrollToSection('projects'); }} className="magnetic-target">Projects</a>
             <a href="#skills" onClick={e => { e.preventDefault(); scrollToSection('skills'); }} className="magnetic-target">Skills</a>
             <a href="#services" onClick={e => { e.preventDefault(); scrollToSection('services'); }} className="magnetic-target">Services</a>
-            <a href="#contact" onClick={e => { e.preventDefault(); scrollToSection('contact'); }} className="magnetic-target">About</a>
+            <a href="#skills" onClick={e => { e.preventDefault(); scrollToSection('skills'); }} className="magnetic-target">About</a>
             <a href="#contact" onClick={e => { e.preventDefault(); scrollToSection('contact'); }} className="magnetic-target">Contact</a>
           </div>
 
@@ -457,10 +466,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* CONTACT SECTION — Premium redesign */}
-        <ContactSection activeColor={activeColor} />
       </div>
+
+      {/* CONTACT SECTION — Premium redesign */}
+      <ContactSection activeColor={activeColor} />
 
       {/* FOOTER — Premium redesign */}
       <FooterSection activeColor={activeColor} onScrollToSection={scrollToSection} />

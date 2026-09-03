@@ -77,6 +77,11 @@ html {
     scroll-behavior: smooth;
 }
 
+section[id],
+header[id] {
+    scroll-margin-top: 100px;
+}
+
 body {
     background: transparent;
     color: var(--ink);
@@ -1017,30 +1022,32 @@ body.light-theme .floating-nav-container {
 .floating-logo-link {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .floating-logo-text {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 26px;
-    /* Adjusted to look clean and modern */
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-weight: 800;
+    font-size: 21px;
     letter-spacing: -0.03em;
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    line-height: 1;
 }
 
 .floating-logo-text .logo-jatin {
-    font-weight: 700;
-    background: linear-gradient(135deg, #00E5A8 0%, #38BDF8 100%);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--active-color, #2563EB) 0%, #7C3AED 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
 }
 
-.floating-logo-text:hover .logo-jatin {
-    filter: brightness(1.1);
+.floating-logo-link:hover .logo-jatin {
+    filter: brightness(1.15);
 }
 
 .floating-links-list {
@@ -1144,6 +1151,31 @@ body.light-theme .floating-btn-hire:hover {
     }
 }
 
+@media (max-width: 640px) {
+    .floating-header {
+        top: 16px;
+    }
+
+    .floating-nav-container {
+        width: 92%;
+        height: 64px;
+        padding: 0 18px;
+    }
+
+    .floating-logo-text {
+        font-size: 18px;
+    }
+
+    .floating-btn-hire {
+        display: none;
+    }
+
+    .floating-btn-resume {
+        padding: 8px 18px;
+        font-size: 13px;
+    }
+}
+
 /* ================================================================
    PREMIUM CONTACT SECTION
    ================================================================ */
@@ -1221,11 +1253,17 @@ body.light-theme .floating-btn-hire:hover {
     background-clip: text;
 }
 
+.cp-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .cp-desc {
     font-size: 1.05rem;
     line-height: 1.75;
     color: var(--ink-soft);
-    margin-bottom: 44px;
+    margin-bottom: 6px;
     max-width: 480px;
 }
 
@@ -1236,7 +1274,7 @@ body.light-theme .floating-btn-hire:hover {
     gap: 14px;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 580px) {
     .cp-info-grid {
         grid-template-columns: 1fr;
     }
@@ -1246,13 +1284,13 @@ body.light-theme .floating-btn-hire:hover {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 18px 20px;
+    padding: 16px 18px;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(12px);
     cursor: default;
-    transition: border-color 0.3s ease, background 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.25s ease;
 }
 
 body.light-theme .cp-info-card {
@@ -1263,6 +1301,7 @@ body.light-theme .cp-info-card {
 .cp-info-card:hover {
     border-color: rgba(255, 255, 255, 0.18);
     background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-2px);
 }
 
 body.light-theme .cp-info-card:hover {
@@ -1294,8 +1333,8 @@ body.light-theme .cp-info-card:hover {
     font-size: 13px;
     font-weight: 500;
     color: var(--ink);
-    word-break: break-word;
-    overflow-wrap: anywhere;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .cp-info-link {
@@ -1305,6 +1344,113 @@ body.light-theme .cp-info-card:hover {
 
 .cp-info-link:hover {
     opacity: 0.7;
+}
+
+/* Perks & Quick Connect Card */
+.cp-perks-card {
+    border-radius: 20px;
+    padding: 22px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+body.light-theme .cp-perks-card {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.07);
+}
+
+.cp-perks-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.cp-perks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cp-perk-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.cp-perk-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+}
+
+.cp-perk-name {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.cp-perk-text {
+    color: var(--ink-soft);
+}
+
+.cp-perks-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 6px;
+    flex-wrap: wrap;
+}
+
+.cp-wa-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    background: #25D366;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+    transition: all 0.25s ease;
+}
+
+.cp-wa-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    filter: brightness(1.05);
+}
+
+.cp-email-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 9999px;
+    border: 1px solid;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    background: transparent;
+    transition: all 0.25s ease;
+}
+
+.cp-email-action-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 0, 0, 0.04);
 }
 
 /* Glass card */
@@ -1701,6 +1847,14 @@ body.light-theme .ft-divider {
 }
 
 /* Brand */
+.ft-brand-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+}
+
 .ft-brand-name {
     font-size: 1.75rem;
     font-weight: 800;
@@ -1711,6 +1865,10 @@ body.light-theme .ft-divider {
     background-clip: text;
     display: inline-block;
     margin-bottom: 14px;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+    align-self: flex-start;
 }
 
 .ft-brand-tag {
@@ -1719,6 +1877,10 @@ body.light-theme .ft-divider {
     color: var(--ink-soft);
     margin-bottom: 28px;
     max-width: 360px;
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+    align-self: flex-start;
 }
 
 /* Socials */
@@ -1726,6 +1888,11 @@ body.light-theme .ft-divider {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 0;
+    margin-right: auto;
+    align-self: flex-start;
 }
 
 .ft-social-icon {
