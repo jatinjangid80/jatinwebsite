@@ -163,6 +163,43 @@ a {
     }
 }
 
+/* Waving & Floating Hand Animation */
+.waving-hand {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: waveAndFloat 2.4s ease-in-out infinite;
+    cursor: default;
+    will-change: transform;
+    margin-left: 2px;
+}
+
+@keyframes waveAndFloat {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    10% {
+        transform: translateY(-4px) rotate(16deg);
+    }
+    20% {
+        transform: translateY(0px) rotate(-10deg);
+    }
+    30% {
+        transform: translateY(-4px) rotate(14deg);
+    }
+    40% {
+        transform: translateY(0px) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-2px) rotate(10deg);
+    }
+    60% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
 /* NAV */
 nav {
     position: sticky;
@@ -627,15 +664,23 @@ body.light-theme .skill-card:hover {
     background: rgba(255, 255, 255, 0.03);
 }
 
+.project-links-row {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
 .project-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 28px;
     font-size: 15px;
     font-weight: 600;
     color: var(--accent);
     text-decoration: none;
+    transition: all 0.2s ease;
 }
 
 .project-link::after {
@@ -645,6 +690,19 @@ body.light-theme .skill-card:hover {
 
 .project-link:hover::after {
     transform: translateX(5px);
+}
+
+.project-github-link {
+    color: var(--ink-soft);
+}
+
+.project-github-link::after {
+    display: none;
+}
+
+.project-github-link:hover {
+    color: var(--ink);
+    transform: translateY(-1px);
 }
 
 /* SERVICES */
@@ -2002,8 +2060,8 @@ body.light-theme .ft-bottom {
 
 .ft-bottom-inner {
     max-width: 1280px;
-    margin:  0 auto;
-    padding: 0  auto;
+    margin: 0 auto;
+    padding: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -137,8 +137,8 @@ export default function Home() {
     };
   }, []);
 
-  // Removed typewriter effect so text appears instantly
-  const eyebrow = "AVAILABLE FOR FREELANCE WORK";
+  // Badge text
+  const eyebrow = "OPEN TO FREELANCE & COLLABORATION";
 
 
   const scrollToSection = (id: string) => {
@@ -256,16 +256,14 @@ export default function Home() {
           </div>
 
           <h1 className="font-display font-bold text-slate-900 dark:text-white leading-[1.08] tracking-tight mb-8">
-            Hi, I'm Jatin 👋<br />
+            Hi, I'm Jatin <span className="waving-hand">👋</span><br />
             Full-Stack Developer<br />
-            building modern web products<br />
-            for startups & businesses.
+            building products that solve real problems.
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-normal leading-relaxed mb-10">
-            I design and develop fast, scalable websites,<br />
-            SaaS products, CRM systems, AI automations,<br />
-            and modern web applications.
+            I design and develop modern web applications, SaaS platforms,<br />
+            real-time systems, and AI-powered solutions with clean, scalable code.
           </p>
 
           <div className="hero-ctas">
@@ -279,7 +277,7 @@ export default function Home() {
                 letterSpacing: '-0.01em',
               }}
             >
-              <span>View Projects</span>
+              <span>Explore Projects</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1.5 text-xl">&rarr;</span>
             </a>
             <a
@@ -293,7 +291,7 @@ export default function Home() {
                 letterSpacing: '-0.01em',
               }}
             >
-              Book a Call
+              Let's Connect
             </a>
             <a
               href="https://drive.google.com/uc?export=download&id=141wwqVCfidnsv5iwHF2wbZaSarzLvSmF"
@@ -324,6 +322,7 @@ export default function Home() {
           </div>
 
           <div className="projects-list">
+            {/* 1. LookMyHolidays */}
             <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
               <div className="spotlight-overlay" />
               <div className="project-inner relative z-10">
@@ -331,18 +330,26 @@ export default function Home() {
                   <h3>LookMyHolidays</h3>
                   <span className="project-status">Live</span>
                 </div>
-                <p>A travel agency website handling package listings, SEO, and customer-facing content, deployed with a custom domain.</p>
+                <p>A full-scale travel agency platform handling package listings, SEO optimization, and live customer inquiry booking flows.</p>
                 <div className="stack-row">
                   <span className="stack-tag">React</span>
+                  <span className="stack-tag">TypeScript</span>
                   <span className="stack-tag">Vercel</span>
                   <span className="stack-tag">SEO</span>
                 </div>
-                <a href="https://www.lookmyholiday.co.in/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
-                  Visit site
-                </a>
+                <div className="project-links-row">
+                  <a href="https://www.lookmyholiday.co.in/" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+                    Visit site
+                  </a>
+                  <a href="https://github.com/jatinjangid80/lookmyholidays" target="_blank" rel="noopener noreferrer" className="project-link project-github-link magnetic-target">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '16px', height: '16px' }}><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    GitHub Repo
+                  </a>
+                </div>
               </div>
             </div>
 
+            {/* 2. CRM Dashboard */}
             <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
               <div className="spotlight-overlay" />
               <div className="project-inner relative z-10">
@@ -350,29 +357,75 @@ export default function Home() {
                   <h3>CRM Dashboard</h3>
                   <span className="project-status">Live</span>
                 </div>
-                <p>An internal CRM for managing employees and client records, server-rendered and deployed on Vercel.</p>
+                <p>An internal enterprise CRM for managing employees and client records, server-rendered and deployed on custom domain.</p>
                 <div className="stack-row">
                   <span className="stack-tag">TanStack Start</span>
                   <span className="stack-tag">Nitro SSR</span>
+                  <span className="stack-tag">TypeScript</span>
                   <span className="stack-tag">Vercel</span>
                 </div>
-                <a href="https://crm-lookmywebsites.vercel.app" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
-                  Visit dashboard
-                </a>
+                <div className="project-links-row">
+                  <a href="https://www.crmlookmyholidays.com" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+                    Visit dashboard
+                  </a>
+                  <a href="https://github.com/jatinjangid80/CRM-lookmywebsites" target="_blank" rel="noopener noreferrer" className="project-link project-github-link magnetic-target">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '16px', height: '16px' }}><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    GitHub Repo
+                  </a>
+                </div>
               </div>
             </div>
 
+            {/* 3. Studypoint Multi-PG Management SaaS */}
             <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
               <div className="spotlight-overlay" />
               <div className="project-inner relative z-10">
                 <div className="project-top">
-                  <h3>Space Escape Runner</h3>
-                  <span className="project-status">In progress</span>
+                  <h3>Studypoint SaaS</h3>
+                  <span className="project-status">Featured</span>
                 </div>
-                <p>A mobile arcade game built with React Native and Expo, currently in active development.</p>
+                <p>Multi-PG & student accommodation management SaaS platform for student allocations, payment tracking, and automated records.</p>
                 <div className="stack-row">
-                  <span className="stack-tag">React Native</span>
-                  <span className="stack-tag">Expo</span>
+                  <span className="stack-tag">Next.js</span>
+                  <span className="stack-tag">TypeScript</span>
+                  <span className="stack-tag">SaaS</span>
+                  <span className="stack-tag">Supabase</span>
+                </div>
+                <div className="project-links-row">
+                  <a href="https://github.com/jatinjangid80/Studypoint" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+                    View on GitHub
+                  </a>
+                  <a href="https://github.com/jatinjangid80/Studypoint" target="_blank" rel="noopener noreferrer" className="project-link project-github-link magnetic-target">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '16px', height: '16px' }}><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    GitHub Repo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* 4. AS Classes */}
+            <div className="project border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="project-inner relative z-10">
+                <div className="project-top">
+                  <h3>AS Classes</h3>
+                  <span className="project-status">Live</span>
+                </div>
+                <p>An educational coaching and classroom web platform featuring course catalogs, student admissions, and study resources.</p>
+                <div className="stack-row">
+                  <span className="stack-tag">React</span>
+                  <span className="stack-tag">TypeScript</span>
+                  <span className="stack-tag">Web App</span>
+                  <span className="stack-tag">UI/UX</span>
+                </div>
+                <div className="project-links-row">
+                  <a href="https://as-classes.vercel.app" target="_blank" rel="noopener noreferrer" className="project-link magnetic-target">
+                    Visit site
+                  </a>
+                  <a href="https://github.com/jatinjangid80/as-classes-" target="_blank" rel="noopener noreferrer" className="project-link project-github-link magnetic-target">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '16px', height: '16px' }}><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    GitHub Repo
+                  </a>
                 </div>
               </div>
             </div>

@@ -148,7 +148,7 @@ export default function ContactSection({ activeColor }: { activeColor: string })
               </div>
               <div className="cp-perks-footer">
                 <a
-                  href="https://wa.me/"
+                  href="https://wa.me/917340098982"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cp-wa-action-btn"
