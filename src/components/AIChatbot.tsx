@@ -37,10 +37,10 @@ const KNOWLEDGE_BASE = [
     ],
   },
   {
-    keywords: ["price", "pricing", "cost", "rate", "quote", "budget", "how much", "charges"],
-    answer: "Pricing depends on project scope, architecture, and timeline:\n• **Landing Pages & MVPs**: Typically $300 – $900 (1–2 weeks delivery)\n• **Full-Stack SaaS & Custom Web Apps**: $1,000 – $3,500+\n• **Consulting & Feature Additions**: Flexible hourly or milestone-based.\n\nEvery project includes clean TypeScript, responsive UI, SEO setup, and post-launch support.",
+    keywords: ["price", "pricing", "cost", "rate", "quote", "budget", "how much", "charges", "inr", "rupee", "rupees", "dollar", "usd", "landing", "mvp", "saas", "estimate"],
+    answer: "Here is Jatin's standard pricing breakdown:\n• **Landing Pages & MVPs**: ₹25,000 – ₹75,000 ($300 – $900 USD) • 1–2 weeks delivery\n• **Full-Stack SaaS & Custom Web Apps**: ₹85,000 – ₹3,00,000+ ($1,000 – $3,500+ USD)\n• **Consulting & Custom Feature Sprints**: Flexible hourly / milestone-based.\n\n✨ Every project includes clean TypeScript, responsive UI, high-speed performance, SEO setup, and post-launch support.",
     actions: [
-      { label: "Get Instant Quote", actionType: "scroll-calculator" },
+      { label: "Get Instant Estimate", actionType: "scroll-calculator" },
       { label: "Chat on WhatsApp", url: "https://wa.me/917340098982" },
     ],
   },
@@ -64,7 +64,7 @@ const KNOWLEDGE_BASE = [
 const SUGGESTED_CHIPS = [
   "💼 What services do you offer?",
   "🚀 Show me recent projects",
-  "💰 Pricing & timelines?",
+  "💰 Pricing & Rates (INR / USD)",
   "📞 How can I hire Jatin?",
 ];
 
@@ -90,7 +90,7 @@ function SparkleChatIcon() {
         fill="#FACC15"
         style={{ filter: "drop-shadow(0 0 4px rgba(250, 204, 21, 0.85))" }}
       />
-      
+
       {/* Top Sparkle (Center) */}
       <path
         d="M19 1.5C19 3.5 17.5 5 15.5 5C17.5 5 19 6.5 19 8.5C19 6.5 20.5 5 22.5 5C20.5 5 19 3.5 19 1.5Z"
@@ -115,7 +115,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
     {
       id: "welcome-1",
       sender: "bot",
-      text: "👋 Hi there! I'm **Jatin's AI Assistant**. Ask me anything about Jatin's full-stack services, projects, pricing, or tech stack!",
+      text: "👋 Hi there! I'm **Jatin's AI Assistant**. Ask me anything about Jatin's full-stack services, projects, pricing (in INR ₹), or tech stack!",
       time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -385,20 +385,20 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                         </div>
                       )}
                     </div>
-                    <span className="Ai-msg-timestamp">{m.time}</span>
+                    <span className="ai-msg-timestamp">{m.time}</span>
                   </div>
                 </div>
               ))}
 
               {isTyping && (
-                <div className="Ai-message-row bot-row">
-                  <div className="Ai-bot-msg-icon" style={{ background: `${activeColor}20`, color: activeColor }}>
+                <div className="ai-message-row bot-row">
+                  <div className="ai-bot-msg-icon" style={{ background: `${activeColor}20`, color: activeColor }}>
                     🤖
                   </div>
-                  <div className="Ai-msg-bubble bot-bubble ai-typing-bubble">
-                    <span className="Ai-dot" />
-                    <span className="Ai-dot" />
-                    <span className="Ai-dot" />
+                  <div className="ai-msg-bubble bot-bubble ai-typing-bubble">
+                    <span className="ai-dot" />
+                    <span className="ai-dot" />
+                    <span className="ai-dot" />
                   </div>
                 </div>
               )}
@@ -406,14 +406,14 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
             </div>
 
             {/* Quick Suggestions Chips */}
-            <div className="Ai-chips-shelf">
-              <div className="Ai-chips-scroll">
+            <div className="ai-chips-shelf">
+              <div className="ai-chips-scroll">
                 {SUGGESTED_CHIPS.map((chip, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => handleSend(chip)}
-                    className="Ai-suggest-chip"
+                    className="ai-suggest-chip"
                   >
                     {chip}
                   </button>
@@ -427,7 +427,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                 e.preventDefault();
                 handleSend();
               }}
-              className="Ai-chat-input-bar"
+              className="ai-chat-input-bar"
             >
               <input
                 ref={inputRef}
@@ -435,12 +435,12 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about services, projects, rates..."
-                className="Ai-chat-input-field"
+                className="ai-chat-input-field"
               />
               <button
                 type="submit"
                 disabled={!input.trim()}
-                className="Ai-chat-send-btn"
+                className="ai-chat-send-btn"
                 style={{
                   background: input.trim() ? `linear-gradient(135deg, ${activeColor}, #7C3AED)` : "var(--line)",
                   color: "#fff",
