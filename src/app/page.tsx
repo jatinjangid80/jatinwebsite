@@ -11,6 +11,7 @@ import ContactSection from '../components/ContactSection';
 import FinalCTA from '../components/FinalCTA';
 import FooterSection from '../components/FooterSection';
 import LoginModal from '../components/LoginModal';
+import AIChatbot from '../components/AIChatbot';
 import { supabase } from '@/lib/supabaseClient';
 
 const PALETTE = ['#2563EB', '#7C3AED', '#EC4899', '#F97316', '#FACC15', '#10B981', '#06B6D4'];
@@ -704,6 +705,9 @@ export default function Home() {
 
       {/* 10. LOGIN MODAL POPUP */}
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+
+      {/* 11. FLOATING AI CHATBOT (BOTTOM RIGHT) */}
+      <AIChatbot activeColor={activeColor} />
     </>
   );
 }
