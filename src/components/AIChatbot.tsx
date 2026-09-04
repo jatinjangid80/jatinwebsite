@@ -68,6 +68,46 @@ const SUGGESTED_CHIPS = [
   "📞 How can I hire Jatin?",
 ];
 
+function SparkleChatIcon() {
+  return (
+    <svg width="34" height="34" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="ai-sparkle-chat-svg">
+      {/* Speech Bubble Base */}
+      <path
+        d="M6 9C6 6.79086 7.79086 5 10 5H24C26.2091 5 28 6.79086 28 9V19C28 21.2091 26.2091 23 24 23H10.5L6 27V9Z"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="2.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Horizontal Chat Lines */}
+      <line x1="11" y1="11" x2="20" y2="11" stroke="#ffffff" strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="11" y1="16.5" x2="17" y2="16.5" stroke="#ffffff" strokeWidth="2.6" strokeLinecap="round" />
+
+      {/* Primary Big Sparkle (Top-Right) */}
+      <path
+        d="M28 6C28 9.5 25.5 12 22 12C25.5 12 28 14.5 28 18C28 14.5 30.5 12 34 12C30.5 12 28 9.5 28 6Z"
+        fill="#FACC15"
+        style={{ filter: "drop-shadow(0 0 4px rgba(250, 204, 21, 0.85))" }}
+      />
+      
+      {/* Top Sparkle (Center) */}
+      <path
+        d="M19 1.5C19 3.5 17.5 5 15.5 5C17.5 5 19 6.5 19 8.5C19 6.5 20.5 5 22.5 5C20.5 5 19 3.5 19 1.5Z"
+        fill="#FDE047"
+        style={{ filter: "drop-shadow(0 0 3px rgba(253, 224, 71, 0.8))" }}
+      />
+
+      {/* Small Sparkle (Bottom Right of bubble) */}
+      <path
+        d="M20 17C20 18.2 19 19.2 17.8 19.2C19 19.2 20 20.2 20 21.4C20 20.2 21 19.2 22.2 19.2C21 19.2 20 18.2 20 17Z"
+        fill="#FACC15"
+        style={{ filter: "drop-shadow(0 0 3px rgba(250, 204, 21, 0.85))" }}
+      />
+    </svg>
+  );
+}
+
 export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
@@ -234,14 +274,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <div className="relative flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                <path d="M8 9h8" strokeWidth="2" />
-                <path d="M8 13h5" strokeWidth="2" />
-              </svg>
-              <span className="ai-trigger-sparkle">✨</span>
-            </div>
+            <SparkleChatIcon />
           )}
         </motion.button>
       </div>
@@ -352,20 +385,20 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                         </div>
                       )}
                     </div>
-                    <span className="ai-msg-timestamp">{m.time}</span>
+                    <span className="Ai-msg-timestamp">{m.time}</span>
                   </div>
                 </div>
               ))}
 
               {isTyping && (
-                <div className="ai-message-row bot-row">
-                  <div className="ai-bot-msg-icon" style={{ background: `${activeColor}20`, color: activeColor }}>
+                <div className="Ai-message-row bot-row">
+                  <div className="Ai-bot-msg-icon" style={{ background: `${activeColor}20`, color: activeColor }}>
                     🤖
                   </div>
-                  <div className="ai-msg-bubble bot-bubble ai-typing-bubble">
-                    <span className="ai-dot" />
-                    <span className="ai-dot" />
-                    <span className="ai-dot" />
+                  <div className="Ai-msg-bubble bot-bubble ai-typing-bubble">
+                    <span className="Ai-dot" />
+                    <span className="Ai-dot" />
+                    <span className="Ai-dot" />
                   </div>
                 </div>
               )}
@@ -373,14 +406,14 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
             </div>
 
             {/* Quick Suggestions Chips */}
-            <div className="ai-chips-shelf">
-              <div className="ai-chips-scroll">
+            <div className="Ai-chips-shelf">
+              <div className="Ai-chips-scroll">
                 {SUGGESTED_CHIPS.map((chip, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => handleSend(chip)}
-                    className="ai-suggest-chip"
+                    className="Ai-suggest-chip"
                   >
                     {chip}
                   </button>
@@ -394,7 +427,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                 e.preventDefault();
                 handleSend();
               }}
-              className="ai-chat-input-bar"
+              className="Ai-chat-input-bar"
             >
               <input
                 ref={inputRef}
@@ -402,12 +435,12 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about services, projects, rates..."
-                className="ai-chat-input-field"
+                className="Ai-chat-input-field"
               />
               <button
                 type="submit"
                 disabled={!input.trim()}
-                className="ai-chat-send-btn"
+                className="Ai-chat-send-btn"
                 style={{
                   background: input.trim() ? `linear-gradient(135deg, ${activeColor}, #7C3AED)` : "var(--line)",
                   color: "#fff",

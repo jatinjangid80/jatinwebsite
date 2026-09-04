@@ -3787,30 +3787,32 @@ body.light-theme .ai-greeting-pill {
 }
 
 .ai-chatbot-trigger-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: none;
+    width: 62px;
+    height: 62px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ai-trigger-sparkle {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    font-size: 13px;
-    animation: sparkleSpin 4s ease-in-out infinite;
+.ai-chatbot-trigger-btn:hover {
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.45), 0 0 0 1.5px rgba(255, 255, 255, 0.35) inset;
+    filter: brightness(1.06);
 }
 
-@keyframes sparkleSpin {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.25) rotate(15deg); }
+.ai-sparkle-chat-svg {
+    display: block;
+    transform: scale(1.05);
+    transition: transform 0.25s ease;
+}
+
+.ai-chatbot-trigger-btn:hover .ai-sparkle-chat-svg {
+    transform: scale(1.12);
 }
 
 /* Chat Window Container */
