@@ -8,7 +8,7 @@ const QUICK_LINKS = [
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Services', href: '#services' },
-  { label: 'About', href: '#skills' },
+  { label: 'Client Login / Portal', href: '/login' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -59,8 +59,39 @@ export default function FooterSection({ activeColor, onScrollToSection }: { acti
         <div className="ft-inner">
           {/* Brand */}
           <div className="ft-brand-block">
-            <a href="#" className="ft-brand-name" style={{ background: `linear-gradient(135deg, ${activeColor}, #7C3AED)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Jatin Jangid
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onScrollToSection('top');
+              }}
+              className="ft-brand-name-wrap magnetic-target"
+            >
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '32px', height: '32px' }}>
+                <defs>
+                  <linearGradient id="ft-j-logo-grad" x1="1" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor={activeColor} />
+                    <stop offset="100%" stopColor="#7C3AED" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 44 24 L 76 24 L 76 60 A 28 28 0 0 1 20 60"
+                  stroke="url(#ft-j-logo-grad)"
+                  strokeWidth="10"
+                  strokeLinecap="butt"
+                  strokeLinejoin="miter"
+                />
+                <path
+                  d="M 44 42 L 60 42 L 60 60 A 12 12 0 0 1 36 60"
+                  stroke="url(#ft-j-logo-grad)"
+                  strokeWidth="10"
+                  strokeLinecap="butt"
+                  strokeLinejoin="miter"
+                />
+              </svg>
+              <span className="ft-brand-title">
+                Jatin Jangid
+              </span>
             </a>
             <p className="ft-brand-tag">
               Building websites, SaaS products, AI automations,<br />and digital experiences.
@@ -102,7 +133,12 @@ export default function FooterSection({ activeColor, onScrollToSection }: { acti
                     <a
                       href={l.href}
                       className="ft-link"
-                      onClick={e => { e.preventDefault(); onScrollToSection(l.href.replace('#','') || 'top'); }}
+                      onClick={e => {
+                        if (!l.href.startsWith('/')) {
+                          e.preventDefault();
+                          onScrollToSection(l.href.replace('#','') || 'top');
+                        }
+                      }}
                     >
                       <span className="ft-link-arrow">→</span>{l.label}
                     </a>

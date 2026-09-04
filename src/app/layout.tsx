@@ -18,16 +18,66 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jatin Jangid — Full-Stack Developer",
-  description: "I design, build, and ship websites, dashboards, and mobile runner games.",
+  metadataBase: new URL("https://jatinwebsite-gamma.vercel.app"),
+  title: "Jatin Jangid | Full-Stack Developer — Web, SaaS & AI Products",
+  description: "Jatin Jangid is a full-stack developer building modern web applications, SaaS platforms, real-time systems, and AI-powered solutions for startups and businesses.",
+  keywords: [
+    "Jatin Jangid",
+    "Full-Stack Developer",
+    "Next.js Developer",
+    "React Developer",
+    "TypeScript",
+    "SaaS Development",
+    "AI Automations",
+    "Freelance Web Developer",
+    "Web Application Developer"
+  ],
+  authors: [{ name: "Jatin Jangid", url: "https://github.com/jatinjangid80" }],
+  creator: "Jatin Jangid",
   openGraph: {
-    title: "Jatin Jangid — Full-Stack Developer",
-    description: "I design, build, and ship websites, dashboards, and mobile apps — from first commit to live deployment.",
-    url: "https://jatinwebsite-gamma.vercel.app/", // Or the final custom domain
+    title: "Jatin Jangid | Full-Stack Developer — Web, SaaS & AI Products",
+    description: "I design and build scalable web applications, SaaS platforms, real-time systems, and AI-powered products for startups and businesses.",
+    url: "https://jatinwebsite-gamma.vercel.app/",
     siteName: "Jatin Jangid Portfolio",
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jatin Jangid | Full-Stack Developer",
+    description: "Full-stack developer building modern web apps, SaaS products, and AI solutions.",
+    creator: "@jatinjangid80",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jatin Jangid",
+  "jobTitle": "Full-Stack Developer",
+  "url": "https://jatinwebsite-gamma.vercel.app",
+  "sameAs": [
+    "https://github.com/jatinjangid80",
+    "https://linkedin.com",
+    "https://wa.me/917340098982"
+  ],
+  "knowsAbout": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Full-Stack Web Development",
+    "SaaS Architecture",
+    "AI Automations",
+    "Tailwind CSS",
+    "Node.js",
+    "PostgreSQL",
+    "Supabase"
+  ],
+  "description": "Full-Stack Developer specializing in high-performance web applications, SaaS platforms, and AI automations."
 };
 
 export default function RootLayout({
@@ -41,7 +91,13 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen relative overflow-x-hidden light-theme" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-screen relative light-theme" style={{ overflowX: 'clip' }} suppressHydrationWarning>
         {children}
       </body>
     </html>
