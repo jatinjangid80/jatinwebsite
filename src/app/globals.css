@@ -4127,28 +4127,36 @@ body.light-theme .ai-suggest-chip {
 
 /* Input Bar */
 .ai-chat-input-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 10px !important;
     padding: 12px 14px;
     border-top: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(18, 18, 28, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 body.light-theme .ai-chat-input-bar {
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.08);
 }
 
 .ai-chat-input-field {
     flex: 1;
+    min-width: 0;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 10px 14px;
+    border-radius: 14px;
+    padding: 11px 16px;
     color: var(--ink);
     font-size: 13.5px;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 body.light-theme .ai-chat-input-field {
@@ -4157,28 +4165,33 @@ body.light-theme .ai-chat-input-field {
 }
 
 .ai-chat-input-field:focus {
-    border-color: var(--accent);
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
 }
 
 .ai-chat-send-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.2s ease;
     flex-shrink: 0;
 }
 
 .ai-chat-send-btn:hover:not(:disabled) {
-    transform: scale(1.06);
+    transform: scale(1.06) translateY(-1px);
+}
+
+.ai-chat-send-btn:active:not(:disabled) {
+    transform: scale(0.95);
 }
 
 .ai-chat-send-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
