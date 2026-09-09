@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ParticleBackground from '../components/ParticleBackground';
+import AboutProfile from '../components/AboutProfile';
 import StartProjectMini from '../components/StartProjectMini';
 import TrustSignals from '../components/TrustSignals';
 import HowIWork from '../components/HowIWork';
@@ -201,7 +202,7 @@ export default function Home() {
     }
   };
 
-  // 2. Continuous smooth color cycling
+  // Continuous smooth color cycling
   useEffect(() => {
     let animationFrameId: number;
     let startTime = performance.now();
@@ -233,7 +234,7 @@ export default function Home() {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  // 3. Spotlight Card mouse interaction
+  // Spotlight Card mouse interaction
   const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -242,7 +243,7 @@ export default function Home() {
     e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
   };
 
-  // 4. Magnetic targets
+  // Magnetic targets
   useEffect(() => {
     const magneticElements = document.querySelectorAll('.magnetic-target');
 
@@ -273,7 +274,7 @@ export default function Home() {
     };
   }, []);
 
-  const eyebrow = "OPEN TO FREELANCE & COLLABORATION";
+  const eyebrow = "OPEN FOR FREELANCE & FULL-STACK COLLABORATION";
 
   const scrollToSection = (id: string) => {
     if (!id || id === 'top') {
@@ -330,16 +331,17 @@ export default function Home() {
 
           <div className="floating-links-list">
             <a href="#" onClick={e => { e.preventDefault(); scrollToSection('top'); }} className="magnetic-target">Home</a>
+            <a href="#about" onClick={e => { e.preventDefault(); scrollToSection('about'); }} className="magnetic-target">About</a>
+            <a href="#skills" onClick={e => { e.preventDefault(); scrollToSection('skills'); }} className="magnetic-target">Tech Stack</a>
             <a href="#projects" onClick={e => { e.preventDefault(); scrollToSection('projects'); }} className="magnetic-target">Projects</a>
             <a href="#services" onClick={e => { e.preventDefault(); scrollToSection('services'); }} className="magnetic-target">Services</a>
             <a href="#process" onClick={e => { e.preventDefault(); scrollToSection('process'); }} className="magnetic-target">Process</a>
-            <a href="#skills" onClick={e => { e.preventDefault(); scrollToSection('skills'); }} className="magnetic-target">Skills</a>
             <a href="#contact" onClick={e => { e.preventDefault(); scrollToSection('contact'); }} className="magnetic-target">Contact</a>
           </div>
 
           <div className="floating-actions-container">
-            <a href="#start-project" onClick={e => { e.preventDefault(); scrollToSection('start-project'); }} className="floating-btn-hire magnetic-target">
-              Start Project
+            <a href="#contact" onClick={e => { e.preventDefault(); scrollToSection('contact'); }} className="floating-btn-hire magnetic-target">
+              Hire Me
             </a>
 
             {currentUser ? (
@@ -444,34 +446,32 @@ export default function Home() {
           </div>
 
           <h1 style={{ color: 'var(--ink)' }}>
-            Hi, I&apos;m Jatin <span className="waving-hand">👋</span><br />
-            Full-Stack Developer<br />
-            building products that solve real problems.
+            Jatin Jangid <span className="waving-hand">👋</span><br />
+            Full Stack / Web Developer
           </h1>
 
-          <p className="hero-sub" style={{ color: 'var(--ink-soft)', marginBottom: '40px' }}>
-            I design and build scalable web applications, SaaS platforms,<br />
-            real-time systems, and AI-powered products for startups and businesses.
+          <p className="hero-sub" style={{ color: 'var(--ink-soft)', marginBottom: '36px' }}>
+            I build modern, responsive web applications, business tools, and digital experiences that turn ideas into working products.
           </p>
 
           <div className="hero-ctas">
             <a
-              href="#start-project"
-              onClick={e => { e.preventDefault(); scrollToSection('start-project'); }}
-              className="group relative inline-flex items-center gap-3 font-semibold px-12 py-5 transition-all duration-300 shadow-xl magnetic-target overflow-hidden btn btn-primary"
+              href="#projects"
+              onClick={e => { e.preventDefault(); scrollToSection('projects'); }}
+              className="group relative inline-flex items-center gap-3 font-semibold px-10 py-4 transition-all duration-300 shadow-xl magnetic-target overflow-hidden btn btn-primary"
               style={{
                 color: '#fff',
                 boxShadow: `0 8px 32px ${activeColor}66`,
                 letterSpacing: '-0.01em',
               }}
             >
-              <span>Start a Project</span>
+              <span>View Projects</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1.5 text-xl">&rarr;</span>
             </a>
             <a
-              href="#projects"
-              onClick={e => { e.preventDefault(); scrollToSection('projects'); }}
-              className="inline-flex items-center gap-3 font-semibold px-12 py-5 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
+              href="#contact"
+              onClick={e => { e.preventDefault(); scrollToSection('contact'); }}
+              className="inline-flex items-center gap-3 font-semibold px-10 py-4 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
               style={{
                 borderColor: `${activeColor}66`,
                 color: 'var(--ink)',
@@ -479,13 +479,13 @@ export default function Home() {
                 letterSpacing: '-0.01em',
               }}
             >
-              View My Work
+              Hire Me / Let&apos;s Work Together
             </a>
             <a
               href="https://drive.google.com/uc?export=download&id=141wwqVCfidnsv5iwHF2wbZaSarzLvSmF"
-              target="Resume"
+              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 font-semibold px-12 py-5 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
+              className="inline-flex items-center gap-3 font-semibold px-8 py-4 border-2 transition-all duration-300 magnetic-target backdrop-blur-sm hover:scale-105 btn btn-ghost"
               style={{
                 borderColor: `${activeColor}44`,
                 color: 'var(--ink)',
@@ -499,7 +499,7 @@ export default function Home() {
 
           <div className="hero-availability-indicator">
             <span className="status-dot-green" />
-            <span>Available for freelance projects · Typical response within 24 hours</span>
+            <span>Available for freelance projects · 3rd Year B.Tech Developer · Fast response</span>
           </div>
         </div>
       </header>
@@ -507,40 +507,104 @@ export default function Home() {
       {/* PORTFOLIO & FUNNEL SECTIONS */}
       <div className="wrap">
 
-        {/* 1. COMPACT LEAD INTAKE MINI FORM */}
-        <StartProjectMini activeColor={activeColor} />
+        {/* 1. AUTHENTIC DEVELOPER PROFILE (ABOUT SECTION) */}
+        <AboutProfile activeColor={activeColor} onScrollToSection={scrollToSection} />
 
-        {/* 2. TRUST SIGNALS */}
-        <TrustSignals activeColor={activeColor} />
+        {/* 2. ORGANIZED TECH STACK SECTION */}
+        <section id="skills" className="border-t border-[var(--line)]">
+          <div className="section-head">
+            <div className="section-label" style={{ color: activeColor }}>Tech Stack</div>
+            <h2>Technologies &amp; Core Tools</h2>
+            <p className="section-desc">Organized tools and frameworks I actively use to engineer modern, scalable web solutions.</p>
+          </div>
+          <div className="skill-grid">
+            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-2">🎨</div>
+                <h3>Frontend</h3>
+                <p className="text-xs text-[var(--ink-soft)] mb-3">Modern, responsive user interfaces &amp; animations</p>
+                <ul>
+                  <li>HTML5 &amp; Semantic CSS3</li>
+                  <li>JavaScript (ES6+) &amp; TypeScript</li>
+                  <li>React 19 &amp; Next.js 16</li>
+                  <li>Tailwind CSS &amp; Framer Motion</li>
+                </ul>
+              </div>
+            </div>
+            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-2">⚙️</div>
+                <h3>Backend</h3>
+                <p className="text-xs text-[var(--ink-soft)] mb-3">Server logic, APIs &amp; full-stack SSR</p>
+                <ul>
+                  <li>Node.js &amp; Express.js</li>
+                  <li>Next.js Server Actions</li>
+                  <li>RESTful APIs &amp; Webhooks</li>
+                  <li>SSR &amp; Serverless Handlers</li>
+                </ul>
+              </div>
+            </div>
+            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-2">🗄️</div>
+                <h3>Database</h3>
+                <p className="text-xs text-[var(--ink-soft)] mb-3">Data modeling, relational &amp; document stores</p>
+                <ul>
+                  <li>MongoDB (NoSQL)</li>
+                  <li>MySQL &amp; Relational Schemas</li>
+                  <li>PostgreSQL</li>
+                  <li>Supabase &amp; Row-Level Security</li>
+                </ul>
+              </div>
+            </div>
+            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-2">🛠️</div>
+                <h3>Tools &amp; Workflow</h3>
+                <p className="text-xs text-[var(--ink-soft)] mb-3">Development, testing &amp; deployment pipelines</p>
+                <ul>
+                  <li>Git &amp; GitHub Version Control</li>
+                  <li>Vercel Hosting &amp; CI/CD</li>
+                  <li>Postman API Testing</li>
+                  <li>Figma &amp; UI Prototyping</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* 3. CASE-STUDY ORIENTED PROJECTS SECTION */}
         <section id="projects" className="border-t border-[var(--line)]">
           <div className="section-head">
-            <div className="section-label" style={{ color: activeColor }}>Selected work</div>
-            <h2>Things I&apos;ve shipped</h2>
-            <p className="section-desc">Real-world applications and SaaS platforms solving actual operational bottlenecks.</p>
+            <div className="section-label" style={{ color: activeColor }}>Selected Work &amp; Case Studies</div>
+            <h2>Things I&apos;ve Shipped</h2>
+            <p className="section-desc">Production applications, enterprise dashboards, and full-stack systems solving real business challenges.</p>
           </div>
 
-          {/* Superdesign Stacking Cards Deck Effect */}
+          {/* Stacking Cards Deck Effect */}
           <StackingCards activeColor={activeColor} />
         </section>
 
-        {/* 4. WHAT I CAN BUILD / SERVICES SECTION */}
+        {/* 4. FREELANCE SERVICES (8 SPECIFIC OFFERINGS) */}
         <section id="services" className="border-t border-[var(--line)]">
           <div className="section-head">
-            <div className="section-label" style={{ color: activeColor }}>What I Can Build</div>
+            <div className="section-label" style={{ color: activeColor }}>Freelance Services</div>
             <h2>Tailored Solutions for Your Business</h2>
-            <p className="section-desc">Fixed-scope engineering engagements designed to launch fast, scale reliably, and generate revenue.</p>
+            <p className="section-desc">Direct engineering services to build, launch, and optimize your web presence.</p>
           </div>
           <div className="services-grid">
             <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
               <div className="spotlight-overlay" />
               <div className="relative z-10">
-                <div className="text-2xl mb-3">💻</div>
-                <h3>Web Applications</h3>
-                <p>Custom client portals, interactive data dashboards, and internal management tools built with Next.js and TypeScript.</p>
+                <div className="text-2xl mb-3">🏢</div>
+                <h3>Business Websites</h3>
+                <p>Fast, professional company websites that establish authority, rank on Google, and convert visitors into clients.</p>
                 <button
-                  onClick={() => scrollToSection('start-project')}
+                  onClick={() => scrollToSection('contact')}
                   className="service-cta-link magnetic-target"
                   style={{ color: activeColor }}
                 >
@@ -552,11 +616,11 @@ export default function Home() {
             <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
               <div className="spotlight-overlay" />
               <div className="relative z-10">
-                <div className="text-2xl mb-3">🚀</div>
-                <h3>SaaS Products & MVPs</h3>
-                <p>Full-stack SaaS architectures with auth, subscriptions, database design, and admin panels to launch your product fast.</p>
+                <div className="text-2xl mb-3">✨</div>
+                <h3>Portfolio Websites</h3>
+                <p>Interactive, visually stunning personal brand websites for developers, creators, and consultants.</p>
                 <button
-                  onClick={() => scrollToSection('start-project')}
+                  onClick={() => scrollToSection('contact')}
                   className="service-cta-link magnetic-target"
                   style={{ color: activeColor }}
                 >
@@ -568,11 +632,75 @@ export default function Home() {
             <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
               <div className="spotlight-overlay" />
               <div className="relative z-10">
-                <div className="text-2xl mb-3">🤖</div>
-                <h3>AI Products & Automations</h3>
-                <p>AI workflows, LLM agents, chatbot integrations, and backend automation to streamline repetitive business operations.</p>
+                <div className="text-2xl mb-3">🎯</div>
+                <h3>Landing Pages &amp; Funnels</h3>
+                <p>High-conversion campaign pages with clean copy structure, fast load times, and lead capture forms.</p>
                 <button
-                  onClick={() => scrollToSection('start-project')}
+                  onClick={() => scrollToSection('contact')}
+                  className="service-cta-link magnetic-target"
+                  style={{ color: activeColor }}
+                >
+                  Discuss this project &rarr;
+                </button>
+              </div>
+            </div>
+
+            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-3">🛍️</div>
+                <h3>E-Commerce Websites</h3>
+                <p>Seamless online stores with structured product catalogs, shopping carts, and secure payment workflows.</p>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="service-cta-link magnetic-target"
+                  style={{ color: activeColor }}
+                >
+                  Discuss this project &rarr;
+                </button>
+              </div>
+            </div>
+
+            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-3">⚛️</div>
+                <h3>React Web Applications</h3>
+                <p>Custom dynamic web applications built with React 19 and Next.js 16 with robust state and API integrations.</p>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="service-cta-link magnetic-target"
+                  style={{ color: activeColor }}
+                >
+                  Discuss this project &rarr;
+                </button>
+              </div>
+            </div>
+
+            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-3">📊</div>
+                <h3>CRM &amp; Dashboard Development</h3>
+                <p>Centralized internal management tools, lead pipelines, role-based auth, and admin dashboards (like Look My Holiday CRM).</p>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="service-cta-link magnetic-target"
+                  style={{ color: activeColor }}
+                >
+                  Discuss this project &rarr;
+                </button>
+              </div>
+            </div>
+
+            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
+              <div className="spotlight-overlay" />
+              <div className="relative z-10">
+                <div className="text-2xl mb-3">🔄</div>
+                <h3>Website Redesign</h3>
+                <p>Modernize your existing website with a fresh, sleek design system, improved UX, and responsive layouts.</p>
+                <button
+                  onClick={() => scrollToSection('contact')}
                   className="service-cta-link magnetic-target"
                   style={{ color: activeColor }}
                 >
@@ -585,42 +713,10 @@ export default function Home() {
               <div className="spotlight-overlay" />
               <div className="relative z-10">
                 <div className="text-2xl mb-3">⚡</div>
-                <h3>Real-Time Systems</h3>
-                <p>Live messaging, real-time activity feeds, dynamic notifications, and reactive dashboard interfaces.</p>
+                <h3>Bug Fixing &amp; Speed Optimization</h3>
+                <p>Core Web Vitals tuning, mobile responsiveness fixes, layout bug resolution, and Google search indexing audit.</p>
                 <button
-                  onClick={() => scrollToSection('start-project')}
-                  className="service-cta-link magnetic-target"
-                  style={{ color: activeColor }}
-                >
-                  Discuss this project &rarr;
-                </button>
-              </div>
-            </div>
-
-            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <div className="text-2xl mb-3">🌐</div>
-                <h3>High-Conversion Websites</h3>
-                <p>Ultra-fast company web portals with 95+ performance scores, built-in SEO, and conversion-focused customer funnels.</p>
-                <button
-                  onClick={() => scrollToSection('start-project')}
-                  className="service-cta-link magnetic-target"
-                  style={{ color: activeColor }}
-                >
-                  Discuss this project &rarr;
-                </button>
-              </div>
-            </div>
-
-            <div className="service-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <div className="text-2xl mb-3">🔍</div>
-                <h3>Audit, Speed & SEO Fixes</h3>
-                <p>Comprehensive codebase & SEO audit, Core Web Vitals optimizations, bug fixing, and performance improvements.</p>
-                <button
-                  onClick={() => scrollToSection('start-project')}
+                  onClick={() => scrollToSection('contact')}
                   className="service-cta-link magnetic-target"
                   style={{ color: activeColor }}
                 >
@@ -634,64 +730,11 @@ export default function Home() {
         {/* 5. HOW I WORK (4-STEP AGILE PROCESS) */}
         <HowIWork activeColor={activeColor} onScrollToSection={scrollToSection} />
 
-        {/* 6. ABOUT / SKILLS SECTION */}
-        <section id="skills" className="border-t border-[var(--line)]">
-          <div className="section-head">
-            <div className="section-label" style={{ color: activeColor }}>Capabilities</div>
-            <h2>What I work with</h2>
-            <p className="section-desc">Battle-tested tools and frameworks chosen for speed, type safety, and scalability.</p>
-          </div>
-          <div className="skill-grid">
-            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <h3>Frontend</h3>
-                <ul>
-                  <li>React 19 / Next.js 16</li>
-                  <li>TypeScript &amp; Tailwind CSS</li>
-                  <li>Framer Motion &amp; Three.js</li>
-                  <li>Responsive Design Systems</li>
-                </ul>
-              </div>
-            </div>
-            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <h3>Backend</h3>
-                <ul>
-                  <li>Node.js &amp; Server Actions</li>
-                  <li>Supabase &amp; PostgreSQL</li>
-                  <li>REST APIs &amp; Webhooks</li>
-                  <li>Nitro SSR / Serverless</li>
-                </ul>
-              </div>
-            </div>
-            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <h3>Mobile &amp; Game</h3>
-                <ul>
-                  <li>React Native &amp; Expo</li>
-                  <li>Capacitor &amp; Cross-Platform</li>
-                  <li>Mobile UI/UX Design</li>
-                  <li>State Management</li>
-                </ul>
-              </div>
-            </div>
-            <div className="skill-card border-glow-card spotlight-card" onMouseMove={handleCardMouseMove}>
-              <div className="spotlight-overlay" />
-              <div className="relative z-10">
-                <h3>DevOps &amp; AI</h3>
-                <ul>
-                  <li>Vercel / Cloudflare CI/CD</li>
-                  <li>LLM Integrations &amp; AI Workflows</li>
-                  <li>SEO &amp; Performance Tuning</li>
-                  <li>Git &amp; GitHub Automation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* 6. TRUST SIGNALS */}
+        <TrustSignals activeColor={activeColor} />
+
+        {/* 7. COMPACT LEAD INTAKE MINI FORM */}
+        <StartProjectMini activeColor={activeColor} />
       </div>
 
       {/* 7. CONTACT SECTION */}

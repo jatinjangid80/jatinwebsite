@@ -4,6 +4,13 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import {
+  getRateLimitStatus,
+  recordFailedAttempt,
+  recordSuccessfulLogin,
+  validatePasswordSecurity,
+  RateLimitStatus
+} from "@/lib/authSecurity";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -19,6 +26,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [rateLimitState, setRateLimitState] = useState<RateLimitStatus | null>(null);
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -30,6 +38,35 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
+
+  // Sync rate limit status whenever email changes
+  useEffect(() => {
+    if (email.trim()) {
+      const status = getRateLimitStatus(email.trim());
+      setRateLimitState(status);
+    } else {
+      setRateLimitState(null);
+    }
+  }, [email]);
+
+  // Lockout countdown timer
+  useEffect(() => {
+    if (!rateLimitState?.isLocked || rateLimitState.lockoutRemainingSeconds <= 0) return;
+
+    const interval = setInterval(() => {
+      setRateLimitState((prev) => {
+        if (!prev || prev.lockoutRemainingSeconds <= 1) {
+          return prev ? { ...prev, isLocked: false, lockoutRemainingSeconds: 0 } : null;
+        }
+        return {
+          ...prev,
+          lockoutRemainingSeconds: prev.lockoutRemainingSeconds - 1,
+        };
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [rateLimitState?.isLocked, rateLimitState?.lockoutRemainingSeconds]);
 
   const triggerCelebration = () => {
     try {
@@ -98,27 +135,50 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     e.preventDefault();
     setErrorMessage("");
     setSuccessMessage("");
-    setIsLoading(true);
 
-    if (!email) {
+    const cleanEmail = email.trim();
+    if (!cleanEmail) {
       setErrorMessage("Please enter your email address.");
-      setIsLoading(false);
       return;
     }
 
     if (!password) {
       setErrorMessage("Please enter your password.");
-      setIsLoading(false);
       return;
+    }
+
+    // 1. Check Rate Limiting & Account Lockout
+    const rateCheck = getRateLimitStatus(cleanEmail);
+    if (rateCheck.isLocked) {
+      setErrorMessage(`Account temporarily locked due to repeated failed attempts. Please retry in ${rateCheck.lockoutRemainingSeconds}s.`);
+      setRateLimitState(rateCheck);
+      return;
+    }
+
+    // 2. Validate Password Security & Block Breached Passwords (on sign-up)
+    if (authMode === "signup") {
+      const passwordCheck = validatePasswordSecurity(password);
+      if (!passwordCheck.isValid) {
+        setErrorMessage(passwordCheck.error || "Password is not secure enough.");
+        return;
+      }
+    }
+
+    setIsLoading(true);
+
+    // 3. Progressive Backoff Delay
+    if (rateCheck.progressiveDelayMs > 0) {
+      await new Promise((r) => setTimeout(r, rateCheck.progressiveDelayMs));
     }
 
     if (!isSupabaseConfigured || !supabase) {
       setTimeout(() => {
         setIsLoading(false);
+        recordSuccessfulLogin(cleanEmail);
         const demoUser = {
-          email: email,
+          email: cleanEmail,
           user_metadata: {
-            full_name: fullName || email.split("@")[0] || "Jatin Jangid",
+            full_name: fullName || cleanEmail.split("@")[0] || "Jatin Jangid",
             avatar_url: "",
           },
         };
@@ -136,18 +196,19 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     try {
       if (authMode === "signin") {
         const { data, error } = await supabase.auth.signInWithPassword({
-          email,
+          email: cleanEmail,
           password,
         });
         if (error) throw error;
         if (data.user) {
+          recordSuccessfulLogin(cleanEmail);
           triggerCelebration();
           setSuccessMessage("Signed in successfully!");
           setTimeout(() => onClose(), 700);
         }
       } else if (authMode === "signup") {
         const { data, error } = await supabase.auth.signUp({
-          email,
+          email: cleanEmail,
           password,
           options: {
             data: { full_name: fullName },
@@ -155,13 +216,20 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         });
         if (error) throw error;
         if (data.user) {
+          recordSuccessfulLogin(cleanEmail);
           triggerCelebration();
           setSuccessMessage("Account created successfully!");
           setTimeout(() => onClose(), 700);
         }
       }
     } catch (err: any) {
-      setErrorMessage(err?.message || "Authentication error. Please try again.");
+      const newStatus = recordFailedAttempt(cleanEmail, err?.message || "Invalid credentials");
+      setRateLimitState(newStatus);
+      if (newStatus.isLocked) {
+        setErrorMessage(`Too many failed attempts. Account temporarily locked for 10 minutes.`);
+      } else {
+        setErrorMessage(err?.message || "Authentication error. Please verify your credentials.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -412,15 +480,27 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                       )}
                     </button>
                   </div>
+                  {authMode === "signup" && (
+                    <p className="text-[11px] text-[var(--ink-soft)] mt-1 font-mono">
+                      🔒 Long passphrases allowed (12+ chars). Breached passwords blocked.
+                    </p>
+                  )}
+                  {rateLimitState?.warningMessage && !rateLimitState.isLocked && (
+                    <p className="text-[11px] text-amber-500 mt-1 font-mono">
+                      ⚠️ {rateLimitState.warningMessage}
+                    </p>
+                  )}
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || Boolean(rateLimitState?.isLocked)}
                   className="login-submit-btn magnetic-target"
                 >
                   {isLoading ? (
                     <div className="login-spinner" />
+                  ) : rateLimitState?.isLocked ? (
+                    <span>Locked ({rateLimitState.lockoutRemainingSeconds}s)</span>
                   ) : (
                     <>
                       <span>

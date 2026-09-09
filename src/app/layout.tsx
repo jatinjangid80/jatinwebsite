@@ -19,24 +19,25 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jatinwebsite-gamma.vercel.app"),
-  title: "Jatin Jangid | Full-Stack Developer — Web, SaaS & AI Products",
-  description: "Jatin Jangid is a full-stack developer building modern web applications, SaaS platforms, real-time systems, and AI-powered solutions for startups and businesses.",
+  title: "Jatin Jangid | Full Stack Web Developer — Portfolio & Freelance Services",
+  description: "Jatin Jangid is a full-stack web developer and 3rd-year B.Tech engineering student building modern websites, web applications, CRM dashboards, and business tools that turn ideas into working products.",
   keywords: [
     "Jatin Jangid",
-    "Full-Stack Developer",
+    "Full Stack Developer",
+    "Web Developer",
     "Next.js Developer",
     "React Developer",
-    "TypeScript",
-    "SaaS Development",
-    "AI Automations",
     "Freelance Web Developer",
-    "Web Application Developer"
+    "CRM Developer",
+    "TypeScript Developer",
+    "Jaipur Web Developer",
+    "Node.js Developer"
   ],
   authors: [{ name: "Jatin Jangid", url: "https://github.com/jatinjangid80" }],
   creator: "Jatin Jangid",
   openGraph: {
-    title: "Jatin Jangid | Full-Stack Developer — Web, SaaS & AI Products",
-    description: "I design and build scalable web applications, SaaS platforms, real-time systems, and AI-powered products for startups and businesses.",
+    title: "Jatin Jangid | Full Stack Web Developer",
+    description: "I build modern, responsive web applications, business tools, and digital experiences that turn ideas into working products.",
     url: "https://jatinwebsite-gamma.vercel.app/",
     siteName: "Jatin Jangid Portfolio",
     locale: "en_US",
@@ -44,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jatin Jangid | Full-Stack Developer",
-    description: "Full-stack developer building modern web apps, SaaS products, and AI solutions.",
+    title: "Jatin Jangid | Full Stack Web Developer",
+    description: "Full-stack developer building modern web apps, CRM dashboards, and freelance web solutions.",
     creator: "@jatinjangid80",
   },
   robots: {
@@ -58,26 +59,37 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Jatin Jangid",
-  "jobTitle": "Full-Stack Developer",
+  "jobTitle": "Full Stack Web Developer",
   "url": "https://jatinwebsite-gamma.vercel.app",
+  "email": "jatinnjangid72973@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Jaipur",
+    "addressRegion": "Rajasthan",
+    "addressCountry": "India"
+  },
   "sameAs": [
     "https://github.com/jatinjangid80",
     "https://linkedin.com",
     "https://wa.me/917340098982"
   ],
   "knowsAbout": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
     "React",
     "Next.js",
     "TypeScript",
-    "Full-Stack Web Development",
-    "SaaS Architecture",
-    "AI Automations",
-    "Tailwind CSS",
     "Node.js",
+    "Express",
+    "MongoDB",
+    "MySQL",
     "PostgreSQL",
-    "Supabase"
+    "Supabase",
+    "Full-Stack Web Development",
+    "CRM Development"
   ],
-  "description": "Full-Stack Developer specializing in high-performance web applications, SaaS platforms, and AI automations."
+  "description": "Full-Stack Web Developer building modern web applications, business tools, and responsive digital experiences."
 };
 
 export default function RootLayout({

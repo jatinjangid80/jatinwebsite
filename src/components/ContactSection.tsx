@@ -18,7 +18,17 @@ const INFO_CARDS = [
 ];
 
 const BUDGET_OPTIONS = ["Under ₹20,000","₹20,000 – ₹50,000","₹50,000 – ₹1,00,000","₹1,00,000 – ₹3,00,000","₹3,00,000+","Let's discuss"];
-const PROJECT_TYPES = ["Business Website","SaaS Product","CRM / Dashboard","AI Automation","Travel Website","Mobile App","E-commerce","Other"];
+const PROJECT_TYPES = [
+  "Business Website",
+  "Portfolio Website",
+  "Landing Page / Funnel",
+  "E-commerce Website",
+  "React / Next.js Web App",
+  "CRM / Dashboard Development",
+  "Website Redesign",
+  "Bug Fixing & Speed Optimization",
+  "Other"
+];
 
 const containerV: Variants = { hidden:{opacity:0}, visible:{opacity:1,transition:{staggerChildren:0.12}} };
 const itemV: Variants = { hidden:{opacity:0,y:32}, visible:{opacity:1,y:0,transition:{duration:0.65}} };
@@ -98,11 +108,11 @@ export default function ContactSection({ activeColor }: { activeColor: string })
               </span>
             </motion.div>
             <motion.h2 variants={itemV} className="cp-heading">
-              Let&apos;s Build Something<br/>
-              <span className="cp-heading-grad" style={grad}>Amazing Together.</span>
+              Have a website idea?<br/>
+              <span className="cp-heading-grad" style={grad}>Let&apos;s build it.</span>
             </motion.h2>
             <motion.p variants={itemV} className="cp-desc">
-              Have a project idea, startup, SaaS product, AI automation, CRM, or business website? I&apos;d love to help bring it to life.
+              Whether you need a full-stack web application, a business website, an enterprise CRM, or speed optimization — let&apos;s turn your requirements into a working solution.
             </motion.p>
             <motion.div variants={itemV} className="cp-info-grid">
               {INFO_CARDS.map(c=>(
