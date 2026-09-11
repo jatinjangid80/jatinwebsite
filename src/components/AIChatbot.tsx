@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import PixelRobot from "./PixelRobot";
 
 interface Message {
   id: string;
@@ -217,8 +218,9 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
               onClick={() => setIsOpen(true)}
               className="ai-greeting-pill"
             >
+              <PixelRobot size={22} animated={false} />
               <span className="ai-greeting-dot" />
-              <span>👋 Ask Jatin&apos;s AI anything!</span>
+              <span>Ask Jatin&apos;s AI anything!</span>
               <button
                 type="button"
                 onClick={(e) => {
@@ -253,7 +255,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <ChatBubbleIcon />
+            <PixelRobot size={36} animated={true} />
           )}
         </motion.button>
       </div>
@@ -275,7 +277,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                   className="ai-chat-avatar-halo"
                   style={{ background: `linear-gradient(135deg, ${activeColor}, #7C3AED)` }}
                 >
-                  <span className="text-base">🤖</span>
+                  <PixelRobot size={24} animated={false} />
                   <span className="ai-online-beacon" />
                 </div>
                 <div>
@@ -321,7 +323,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
                 <div key={m.id} className={`ai-message-row ${m.sender === "user" ? "user-row" : "bot-row"}`}>
                   {m.sender === "bot" && (
                     <div className="ai-bot-msg-icon" style={{ background: `${activeColor}20`, color: activeColor }}>
-                      🤖
+                      <PixelRobot size={20} animated={false} />
                     </div>
                   )}
                   <div className="ai-msg-bubble-wrap">
@@ -372,7 +374,7 @@ export default function AIChatbot({ activeColor = "#3B82F6" }: { activeColor?: s
               {isTyping && (
                 <div className="ai-message-row bot-row">
                   <div className="ai-bot-msg-icon" style={{ background: `${activeColor}20`, color: activeColor }}>
-                    🤖
+                    <PixelRobot size={20} animated={false} />
                   </div>
                   <div className="ai-msg-bubble bot-bubble ai-typing-bubble">
                     <span className="ai-dot" />

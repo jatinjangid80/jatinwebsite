@@ -3798,6 +3798,56 @@ body.light-theme .ai-greeting-pill {
     position: relative;
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: visible;
+}
+
+/* Pixel Robot Mascot Keyframes & Styles */
+.pixel-robot-animated {
+    animation: pixelRobotHover 3.5s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+@keyframes pixelRobotHover {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-3px) scale(1.03);
+    }
+}
+
+.robot-eye-blink {
+    animation: robotBlink 4.5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes robotBlink {
+    0%, 93%, 97%, 100% {
+        transform: scaleY(1);
+    }
+    95% {
+        transform: scaleY(0.1);
+    }
+}
+
+.robot-antenna-anim {
+    animation: antennaWiggle 5s ease-in-out infinite;
+    transform-origin: 16px 6.5px;
+}
+
+@keyframes antennaWiggle {
+    0%, 80%, 100% {
+        transform: rotate(0deg);
+    }
+    85% {
+        transform: rotate(-4deg);
+    }
+    90% {
+        transform: rotate(4deg);
+    }
+    95% {
+        transform: rotate(0deg);
+    }
 }
 
 .ai-trigger-sparkle {
