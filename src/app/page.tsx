@@ -86,17 +86,33 @@ export default function Home() {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  // 1. Check & sync user auth state
+  // 1. Check & sync user auth state + handle OAuth callback
   useEffect(() => {
+    // Clean up OAuth query parameters/hash from URL after returning
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("login") === "true") {
+        setIsLoginOpen(true);
+      }
+      if (url.searchParams.has("code") || url.searchParams.has("error") || window.location.hash.includes("access_token")) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+
     const syncUser = () => {
       if (supabase) {
         supabase.auth.getSession().then(({ data: { session } }) => {
           if (session?.user) {
             setCurrentUser(session.user);
+            setIsLoginOpen(false);
           } else {
             const localUser = localStorage.getItem('demo_auth_user');
             if (localUser) {
-              try { setCurrentUser(JSON.parse(localUser)); } catch {}
+              try {
+                const parsed = JSON.parse(localUser);
+                setCurrentUser(parsed);
+                setIsLoginOpen(false);
+              } catch {}
             } else {
               setCurrentUser(null);
             }
@@ -105,7 +121,11 @@ export default function Home() {
       } else {
         const localUser = localStorage.getItem('demo_auth_user');
         if (localUser) {
-          try { setCurrentUser(JSON.parse(localUser)); } catch {}
+          try {
+            const parsed = JSON.parse(localUser);
+            setCurrentUser(parsed);
+            setIsLoginOpen(false);
+          } catch {}
         } else {
           setCurrentUser(null);
         }
@@ -115,9 +135,10 @@ export default function Home() {
     syncUser();
 
     if (supabase) {
-      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
         if (session?.user) {
           setCurrentUser(session.user);
+          setIsLoginOpen(false);
         } else {
           syncUser();
         }
