@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { submitContactForm } from '@/app/actions';
+import { submitQuickInquiry } from '@/app/actions';
 
 export default function StartProjectMini({ activeColor }: { activeColor: string }) {
   const [loading, setLoading] = useState(false);
@@ -70,7 +70,7 @@ export default function StartProjectMini({ activeColor }: { activeColor: string 
     const timeline = (formData.get('projectType') as string) || '';
 
     try {
-      const res = await submitContactForm(formData);
+      const res = await submitQuickInquiry(formData);
       if (res.success) {
         setSubmittedData({ name, email, message, budget, timeline });
         setSubmitted(true);
